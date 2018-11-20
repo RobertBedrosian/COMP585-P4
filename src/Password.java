@@ -10,11 +10,12 @@ import java.util.Base64;
 import java.util.Random;
 
 public class Password {
-    private static final int KEY_LENGTH = 128; //in Bits
+    private static final int KEY_LENGTH = 256; //in Bits
     private static final int ITERATIONS = 10000;
     private static final int SIZE_OF_SALT = 64;
 
     private byte salt [];
+    private byte hashCode [];
     private SecretKeySpec secretKey;
     private String hashedPass="";
 
@@ -29,13 +30,19 @@ public class Password {
 //        System.out.println(decryptPassword(hashedPass,secretKey));
 
         /**Salted-Hash*/
-        hashPassword(password, salt);
+        hashCode = hashPassword(password,salt);
+
+        for (byte i: hashCode){
+            System.out.print(i);
+        }
+        System.out.println();
+
     }
 
     /**Hashes a password. Returns null if the password could not be hashed*/
     private byte[] hashPassword(String password, byte [] salt) {
         char [] passwordToChar = password.toCharArray();
-        PBEKeySpec spec = new PBEKeySpec(passwordToChar, salt, ITERATIONS, SIZE_OF_SALT);
+        PBEKeySpec spec = new PBEKeySpec(passwordToChar, salt, ITERATIONS, KEY_LENGTH);
         SecretKeyFactory factory = null;
         try{
             factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
@@ -47,6 +54,8 @@ public class Password {
         }
         return null;
     }
+
+
 
     //used when loading an existing account
     public Password(String salt, String hashedPass){
