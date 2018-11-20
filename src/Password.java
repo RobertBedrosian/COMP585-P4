@@ -31,17 +31,20 @@ public class Password {
 
         /**Salted-Hash*/
         hashCode = hashPassword(password,salt);
-
         for (byte i: hashCode){
             System.out.print(i);
         }
         System.out.println();
+
+        matchesStoredHashedPassword(password, salt, hashCode);
 
     }
 
     /**Hashes a password. Returns null if the password could not be hashed*/
     private byte[] hashPassword(String password, byte [] salt) {
         char [] passwordToChar = password.toCharArray();
+
+
         PBEKeySpec spec = new PBEKeySpec(passwordToChar, salt, ITERATIONS, KEY_LENGTH);
         SecretKeyFactory factory = null;
         try{
@@ -51,8 +54,31 @@ public class Password {
             System.out.println("There is an error with the encryption algorithm being used to hash the password");
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
+        }finally{
+            spec.clearPassword();
         }
         return null;
+    }
+
+    private boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
+        byte [] tmpHashCode = hashPassword(passwordPlainText, salt);
+        if (tmpHashCode.length != hashCode.length){
+            return false;
+        }
+        else{
+            for (int i = 0;i < hashCode.length; i++){
+                if (tmpHashCode[i] != hashCode[i]){
+                    return false;
+                }
+            }
+        }
+
+        for (byte i: tmpHashCode){
+            System.out.print(i);
+        }
+        System.out.println();
+
+        return true;
     }
 
 
@@ -141,6 +167,8 @@ public class Password {
 
         }catch (InvalidKeySpecException e){
             System.out.println("There is a problem with the keySpec being used");
+        }finally {
+            keySpec.clearPassword();
         }
 
         return new SecretKeySpec(key.getEncoded(), "AES");
