@@ -18,11 +18,29 @@ class FacebookLite
         index = -1;
         nop = 0;
     }
-    
-    public void createProfile(String first , String last , int age)
+
+
+
+    public void createProfile(String first , String last , int age, String password)
     {
         index = nop-1;
-        Profile p = new Profile(first , last , age);
+        Profile p = new Profile(first , last , age, password);
+        if (index < profiles.length)
+        {
+            index++;
+            profiles[index] = p;
+            nop++;
+        }
+        else
+        {
+            Util.print("Unable to add Profile");
+        }
+    }
+
+    public void createProfile(String first , String last , int age, String salt, String hashedPass)
+    {
+        index = nop-1;
+        Profile p = new Profile(first , last , age, salt, hashedPass );
         if (index < profiles.length)
         {
             index++;
@@ -275,7 +293,8 @@ class FacebookLite
                 {
                     fileLine = br.readLine();
                     String[] holdInfo = fileLine.split(";;");
-                    createProfile(holdInfo[0] , holdInfo[1] , Integer.parseInt(holdInfo[2]));
+                    //added the holdInfo[3] not sure what it does though
+                    createProfile(holdInfo[0] , holdInfo[1] , Integer.parseInt(holdInfo[2]), holdInfo[3], holdInfo[4]);
                     fileLine = br.readLine();
                 }
                 
@@ -394,10 +413,14 @@ class FacebookLite
                         boolean checkFirst = false;
                         boolean checkLast = false;
                         boolean checkAge = false;
+                        boolean checkPassword = false;
+
                         String first = "";
                         String last = "";
                         int age = 0;
-                        while(!checkFirst || !checkLast || !checkAge)
+                        String password = "";
+
+                        while(!checkFirst || !checkLast || !checkAge || !checkPassword)
                         {
                             Util.print("Please enter your First Name");
                             first = keyboard.nextLine(); // needs blank line check  --  done
@@ -447,8 +470,33 @@ class FacebookLite
                                     Util.print("Age must be greater than 0 and less than 120");
                                 }
                             }
+
+                            if(checkFirst && checkLast && checkAge){
+                                boolean tempBool = true;
+                                String tempPass = "";
+
+                                while (tempBool){
+                                    Util.print("Please enter a password");
+                                    password = keyboard.nextLine();
+
+                                    if(password.length() == 0 || password.contains(" ")){
+                                        checkPassword = false;
+                                        Util.print("Invalid password");
+                                    }else{
+                                        Util.print("Confirm password");
+                                        tempPass = keyboard.nextLine();
+                                        if (password.equals(tempPass)){
+                                            tempBool = false;
+                                            checkPassword = true;
+                                        }
+                                        else{
+                                            Util.print("Passwords did not match");
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        fbl.createProfile(first , last , age);
+                        fbl.createProfile(first , last , age, password);
                         break;
                     case 2: // delete last profile
                         if (fbl.getNOPS() > 0 && fbl.deleteLastProfile())
