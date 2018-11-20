@@ -12,6 +12,7 @@ import java.util.Random;
 public class Password {
     private static final int KEY_LENGTH = 128; //in Bits
     private static final int ITERATIONS = 10000;
+    private static final int SIZE_OF_SALT = 64;
 
     private byte salt [];
     private SecretKeySpec secretKey;
@@ -19,12 +20,32 @@ public class Password {
 
     //used when creating a new account
     public Password(String password){
-        Random randomNum = new SecureRandom();
-        salt = createSalt(randomNum);
-        this.secretKey = createSecretKey(password, salt);
-        this.hashedPass = createEncryptedPassword(password,secretKey);
+        salt = createSalt(SIZE_OF_SALT);
 
-        System.out.println(decryptPassword(hashedPass,secretKey));
+        /**To be used with AES encryption*/
+//        this.secretKey = createSecretKey(password, salt);
+//        this.hashedPass = createEncryptedPassword(password,secretKey);
+//
+//        System.out.println(decryptPassword(hashedPass,secretKey));
+
+        /**Salted-Hash*/
+        hashPassword(password, salt);
+    }
+
+    /**Hashes a password. Returns null if the password could not be hashed*/
+    private byte[] hashPassword(String password, byte [] salt) {
+        char [] passwordToChar = password.toCharArray();
+        PBEKeySpec spec = new PBEKeySpec(passwordToChar, salt, ITERATIONS, SIZE_OF_SALT);
+        SecretKeyFactory factory = null;
+        try{
+            factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+            return factory.generateSecret(spec).getEncoded();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("There is an error with the encryption algorithm being used to hash the password");
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //used when loading an existing account
@@ -117,9 +138,10 @@ public class Password {
     }
 
 
-    /**Creates a random number*/
-    private byte[] createSalt(Random randomNum) {
-        salt = new byte[64];
+    /**Creates a random number (salt)*/
+    private byte[] createSalt(int SIZE_OF_SALT) {
+        Random randomNum = new SecureRandom();
+        salt = new byte[SIZE_OF_SALT];
         randomNum.nextBytes(salt);
         return salt;
     }
