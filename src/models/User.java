@@ -4,10 +4,23 @@ public class User extends Person implements IDisplay
 {
     private String status;
     private boolean isAgeVis;
-    
-    public User(String firstName , String lastName , int age)
+    private Password password;
+
+
+    //This constructor is used only when a new account is being set up
+    public User(String firstName , String lastName , int age, String password)
     {
         super(firstName , lastName , age);
+        this.password = new Password(password);
+        status = "";
+        isAgeVis = true;
+    }
+
+    //used when loading an existing account
+    public User(String firstName , String lastName , int age, String salt, String hashedPass)
+    {
+        super(firstName , lastName , age);
+        this.password = new Password(salt, hashedPass);
         status = "";
         isAgeVis = true;
     }
@@ -33,6 +46,12 @@ public class User extends Person implements IDisplay
     {
         return status;
     }
+    public String getSalt(){
+        return password.getSalt();
+    }
+    public String getHashedPass(){
+        return password.getHashedPassword();
+    }
     
     // setter
     public void setStatus(String status)
@@ -47,7 +66,7 @@ public class User extends Person implements IDisplay
     
     public String getFormattedInfo()
     {
-        return getFirstName() + ";;" + getLastName() + ";;" + getAge();
+        return getFirstName() + ";;" + getLastName() + ";;" + getAge() + ";;" + getSalt() + ";;" + getHashedPass();
     }
     
     public boolean ageVis()

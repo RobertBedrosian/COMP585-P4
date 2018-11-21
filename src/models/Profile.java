@@ -5,10 +5,17 @@ class Profile
     private User user;  // declared
     private Wall wall;
     private Friends friends;
-    
-    public Profile(String firstName , String lastName , int age)
+
+    public Profile(String firstName , String lastName , int age, String salt, String hashedPass)
     {
-        user = new User(firstName , lastName , age);  // initialized by constructor
+        user = new User(firstName , lastName , age, salt, hashedPass);  // initialized by constructor
+        wall = new Wall();
+        friends = new Friends();
+    }
+    
+    public Profile(String firstName , String lastName , int age, String password)
+    {
+        user = new User(firstName , lastName , age, password);  // initialized by constructor
         wall = new Wall();
         friends = new Friends();
     }
