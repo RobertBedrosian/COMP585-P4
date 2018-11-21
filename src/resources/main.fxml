@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,9 +26,9 @@
             <TextField fx:id="password" layoutX="360.0" layoutY="65.0" promptText="Password" />
             <Label layoutX="268.0" layoutY="19.0" text="Username:" />
             <Label layoutX="269.0" layoutY="70.0" text="Password:" />
-            <Button fx:id="login" layoutX="262.0" layoutY="114.0" mnemonicParsing="false" onAction="#Checkhandle" text="Login" />
-            <Button fx:id="register" layoutX="331.0" layoutY="114.0" mnemonicParsing="false" onAction="#createNew" text="Register" />
-            <Button fx:id="reset" layoutX="417.0" layoutY="114.0" mnemonicParsing="false" onAction="#resetpass" text="Reset Password" />
+            <Button fx:id="login" layoutX="262.0" layoutY="114.0" mnemonicParsing="false"  text="Login" />
+            <Button fx:id="register" layoutX="331.0" layoutY="114.0" mnemonicParsing="false" text="Register" />
+            <Button fx:id="reset" layoutX="417.0" layoutY="114.0" mnemonicParsing="false" text="Reset Password" />
          </children>
       </AnchorPane>
    </center>
