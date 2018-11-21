@@ -11,9 +11,9 @@ public class FacebookLite extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FacebookLite.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 700, 780);
+        Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/FacebookLite.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();

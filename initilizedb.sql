@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS facebook_lite;
 CREATE USER IF NOT EXISTS'db_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-GRANT ALL PRIVILEGES ON facebook_lite.* TO 'db_user'@'localhost';
+GRANT ALL PRIVILEGES ON *.'facebook_lite' TO 'db_user'@'localhost';
 
 USE facebook_lite;
 CREATE TABLE IF NOT EXISTS users (
