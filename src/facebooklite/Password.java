@@ -1,4 +1,4 @@
-package models;
+package facebooklite;
 
 import java.io.UnsupportedEncodingException;
 import java.security.*;
@@ -44,7 +44,7 @@ public class Password {
 
     /**Hashes a password. Returns null if the password could not be hashed*/
     private byte[] hashPassword(String password, byte [] salt) {
-        char [] passwordToChar = password.toCharArray()
+        char [] passwordToChar = password.toCharArray();
 
 
         PBEKeySpec spec = new PBEKeySpec(passwordToChar, salt, ITERATIONS, KEY_LENGTH);
