@@ -8,16 +8,18 @@ import java.util.Scanner;
 public class DBUtil {
     private static Connection conn;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost";
+    private static String url = "jdbc:mysql://localhost/Comp585Project4";
     private static final String user = "root";
     private static String pass = null;
+
 
     public DBUtil(){
 
     }
 
+
     /**This method sets up a connection with the DB.*/
-    public static Connection dbConnect() throws SQLException {
+    private static Connection dbConnect() throws SQLException {
 
         while(true){
 
@@ -38,7 +40,7 @@ public class DBUtil {
 
     }
 
-    public static void dbDisconnect() throws SQLException {
+    private static void dbDisconnect() throws SQLException {
         if (conn != null && !conn.isClosed()){
             conn.close();
         }
@@ -91,11 +93,12 @@ public class DBUtil {
             conn = dbConnect();
 
             statement = conn.createStatement();
-
+            System.out.println("Before the executeUpdate()");
             statement.executeUpdate(sqlStatement);
+            System.out.printf("Created the table");
 
         } catch (SQLException e) {
-            System.out.println("There was a problem establishing a connection with the DB");
+            System.out.println(e);
         }finally {
             if (statement != null){
                 statement.close();
@@ -104,6 +107,7 @@ public class DBUtil {
             dbDisconnect();
         }
     }
+
 
     /**Asks for the admins password to establish a connection.*/
     private static String getDBPassword() {
