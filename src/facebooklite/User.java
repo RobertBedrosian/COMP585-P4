@@ -19,7 +19,30 @@ public class User {
         Password tmpPass = new Password(password);
         this.salt = tmpPass.getSalt();
         this.hashedPassword = tmpPass.getHashedPassword();
+    }
 
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+
+    public byte[] getSalt(){
+        return salt;
+    }
+
+    public byte[] getHashedPassword(){
+        return hashedPassword;
     }
 
 
