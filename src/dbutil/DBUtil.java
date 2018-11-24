@@ -29,7 +29,6 @@ public class DBUtil {
 
             try{
                 conn = DriverManager.getConnection(url, user, pass);
-                System.out.println("success!");
 
                 return conn;
             } catch (SQLException e) {

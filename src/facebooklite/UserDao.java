@@ -16,7 +16,6 @@ public class UserDao  {
                         " VALUES\n" +
                         "( '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getAge()+"', '"+user.getUserName()+"');\n" ;
 
-
         try{
             DBUtil.dbExecuteUpdate(statemet);
         } catch (SQLException e) {

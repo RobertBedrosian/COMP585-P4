@@ -70,11 +70,10 @@ public class Password {
     public boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
         byte [] tmpHashCode = hashPassword(passwordPlainText, salt);
 
-        for(byte i: tmpHashCode){
-            System.out.print(i);
-        }
-
-        System.out.printf("");
+//        for (byte i: tmpHashCode){
+//            System.out.print(i);
+//        }
+//        System.out.println();
 
         if (tmpHashCode.length != hashCode.length){
             return false;
@@ -86,11 +85,6 @@ public class Password {
                 }
             }
         }
-
-        for (byte i: tmpHashCode){
-            System.out.print(i);
-        }
-        System.out.println();
 
         return true;
     }

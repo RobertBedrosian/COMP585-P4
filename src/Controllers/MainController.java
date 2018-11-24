@@ -46,7 +46,7 @@ public class MainController {
     }
 
     @FXML
-    private void login() throws SQLException {
+    private void login(ActionEvent event) throws SQLException, IOException {
         if (uname.getText().equals("")){
 
         }
@@ -56,24 +56,44 @@ public class MainController {
         }
 
         if(!uname.getText().equals("") && !password.getText().equals("")){
+            uname.setStyle(null);
+            password.setStyle(null);
+
             /**Check if the credentials are correct. */
             User user = UserDao.getUser(uname.getText());
-            Password pass = new Password();
 
-            for(byte i: user.getSalt()){
-                System.out.print(i);
+            if (user != null){
+                /**We are here if the user trying to login entered a correct username.*/
+                Password pass = new Password();
+                boolean tmpBoolean = pass.matchesStoredHashedPassword(password.getText(), user.getSalt(), user.getHashedPassword());
+                if (tmpBoolean){
+                    /**We are here if the user provided a correct userName && Password*/
+                    System.out.println("Successfully logged in");
+
+                    /**Switch scenes--to the dashboard-- if correct credentials*/
+                    Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/dashBoard.fxml"));
+                    Scene regFXMLScene = new Scene(regFXMLParent);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(regFXMLScene);
+                    window.show();
+
+                }else{
+                    System.out.println("Incorrect username and/or Password");
+                }
             }
-            System.out.println();
+            else{
+                System.out.println("Incorrect user name");
+            }
+        }
+        else{
+            if(uname.getText().equals("")){
+                uname.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
+            }
 
-            boolean tmpBoolean = pass.matchesStoredHashedPassword(password.getText(), user.getSalt(), user.getHashedPassword());
-            System.out.println(tmpBoolean);
-//            if (tmpBoolean){
-//                System.out.println("Successfully logged in");
-//            }else{
-//                System.out.println("Incorrect Credentials");
-//            }
+            if(password.getText().equals("")){
+                password.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
+            }
         }
     }
-
 
 }
