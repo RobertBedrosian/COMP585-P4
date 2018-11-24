@@ -106,6 +106,23 @@ public class DBUtil {
         }
     }
 
+    public static void dbUpdateSaltAndPass(String userName, byte[] salt, byte[] hashCode){
+        String statement = null;
+        try{
+            conn = dbConnect();
+            statement = "UPDATE users SET Salt= ?, HashedPassword=? WHERE username = '"+userName+"' ";
+
+            PreparedStatement prepStmt = conn.prepareStatement(statement);
+            prepStmt.setBytes(1, salt);
+            prepStmt.setBytes(2,hashCode);
+
+            prepStmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**Asks for the admins password to establish a connection.*/
     private static String getDBPassword() {

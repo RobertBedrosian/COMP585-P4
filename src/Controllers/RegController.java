@@ -52,6 +52,7 @@ public class RegController {
             System.out.println("User does not exist. User will be added");
             User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userName.getText(), password.getText());
             UserDao.insertUser(user);
+            UserDao.updateUserSaltAndPass(userName.getText(), user.getSalt(), user.getHashedPassword());
             System.out.println("User added successfully!");
         }
 

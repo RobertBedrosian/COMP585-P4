@@ -26,7 +26,7 @@
             <TextField fx:id="password" layoutX="360.0" layoutY="65.0" promptText="Password" />
             <Label layoutX="268.0" layoutY="19.0" text="Username:" />
             <Label layoutX="269.0" layoutY="70.0" text="Password:" />
-            <Button fx:id="login" layoutX="262.0" layoutY="114.0" mnemonicParsing="false"  text="Login" />
+            <Button fx:id="login" onAction="#login" layoutX="262.0" layoutY="114.0" mnemonicParsing="false"  text="Login" />
             <Button fx:id="register"  onAction="#openRegFXML" layoutX="331.0" layoutY="114.0" mnemonicParsing="false" text="Register" />
             <Button fx:id="reset" layoutX="417.0" layoutY="114.0" mnemonicParsing="false" text="Reset Password" />
          </children>

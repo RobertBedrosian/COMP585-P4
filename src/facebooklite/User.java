@@ -9,6 +9,10 @@ public class User {
     private byte[] hashedPassword;
 
 
+    public User (){
+
+    }
+
     //This constructor is to used when creating a new profile
     public User (String firstName, String lastName, int age, String userName, String password){
         this.firstName = firstName;
@@ -45,6 +49,27 @@ public class User {
         return hashedPassword;
     }
 
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
 
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
 
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
+
+    public void setSalt(byte [] salt){
+        this.salt = salt;
+    }
+
+    public void setHashedPassword(byte [] hashedPassword){
+        this.hashedPassword = hashedPassword;
+    }
 }

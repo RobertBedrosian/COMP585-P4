@@ -21,6 +21,16 @@ public class Password {
     private SecretKeySpec secretKey;
     private String hashedPass="";
 
+    public Password(){
+
+    }
+
+    /**This constructor is to be used when authenticating a user account*/
+    public Password(String password, byte[] salt, byte[] hashPassword){
+        this.salt = salt;
+        this.hashCode = hashPassword;
+    }
+
     //used when creating a new account
     //This constructor creates a salt and hashed version of the user's password.
     public Password(String password){
@@ -35,8 +45,6 @@ public class Password {
 //        System.out.println(decryptPassword(hashedPass,secretKey));
 
     }
-
-
 
 
     /**Hashes a password. Returns null if the password could not be hashed*/
@@ -61,6 +69,13 @@ public class Password {
 
     public boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
         byte [] tmpHashCode = hashPassword(passwordPlainText, salt);
+
+        for(byte i: tmpHashCode){
+            System.out.print(i);
+        }
+
+        System.out.printf("");
+
         if (tmpHashCode.length != hashCode.length){
             return false;
         }
@@ -94,6 +109,14 @@ public class Password {
 
     public byte[] getHashedPassword(){
         return hashCode;
+    }
+
+    public void setSalt(byte[] salt){
+        this.salt = salt;
+    }
+
+    public void setHashCode(byte[] hashCode ){
+        this.hashCode = hashCode;
     }
 
 
