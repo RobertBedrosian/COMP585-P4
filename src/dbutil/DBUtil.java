@@ -66,7 +66,7 @@ public class DBUtil {
 
         }
         catch (SQLException e) {
-            System.out.println("There was a problem connecting to the DB");
+            System.out.println(e);
         }
         finally {
             if( resultSet != null){

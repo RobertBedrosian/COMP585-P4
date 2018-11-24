@@ -17,12 +17,12 @@
             <Label layoutX="46.0" layoutY="136.0" text="Age:" />
             <Label layoutX="25.0" layoutY="173.0" text="Username:" />
             <Label layoutX="28.0" layoutY="209.0" text="Password:" />
-            <TextField layoutX="107.0" layoutY="59.0" />
-            <TextField layoutX="107.0" layoutY="94.0" />
-            <TextField layoutX="107.0" layoutY="131.0" />
-            <TextField layoutX="107.0" layoutY="168.0" />
-            <TextField layoutX="107.0" layoutY="204.0" />
-            <Button layoutX="117.0" layoutY="252.0" mnemonicParsing="false" text="Submit" />
+            <TextField fx:id="firstName" layoutX="107.0" layoutY="59.0" />
+            <TextField fx:id="lastName" layoutX="107.0" layoutY="94.0" />
+            <TextField fx:id="age" layoutX="107.0" layoutY="131.0" />
+            <TextField fx:id="userName" layoutX="107.0" layoutY="168.0" />
+            <TextField fx:id="password" layoutX="107.0" layoutY="204.0" />
+            <Button onAction="#registerUser" layoutX="117.0" layoutY="252.0" mnemonicParsing="false" text="Submit" />
             <Label layoutX="89.0" layoutY="14.0" text="Registration">
                <font>
                   <Font size="20.0" />
