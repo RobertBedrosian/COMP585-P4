@@ -93,9 +93,7 @@ public class DBUtil {
             conn = dbConnect();
 
             statement = conn.createStatement();
-            System.out.println("Before the executeUpdate()");
             statement.executeUpdate(sqlStatement);
-            System.out.printf("Created the table");
 
         } catch (SQLException e) {
             System.out.println(e);

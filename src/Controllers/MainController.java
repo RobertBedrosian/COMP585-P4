@@ -1,14 +1,37 @@
 package Controllers;
 
 import dbutil.DBUtil;
-import facebooklite.User;
-import facebooklite.UserDao;
-
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import javafx.event.ActionEvent;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class MainController {
+
+    @FXML
+    private TextField uname;
+
+    @FXML
+    private TextField password;
+
+    @FXML
+    private void openRegFXML(ActionEvent event) throws IOException {
+        Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/reg.fxml"));
+        Scene regFXMLScene = new Scene(regFXMLParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(regFXMLScene);
+        window.show();
+    }
 
     @FXML
     private void initialize() throws SQLException {

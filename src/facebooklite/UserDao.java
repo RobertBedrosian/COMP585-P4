@@ -22,7 +22,7 @@ public class UserDao  {
         }
     }
 
-    public static void getUser(int userID) {
+    public static void getUser(String userName) {
 
     }
 
@@ -31,7 +31,7 @@ public class UserDao  {
     }
 
 
-    public static void deleteUser(int userID) {
+    public static void deleteUser(String userName) {
 
     }
 }
