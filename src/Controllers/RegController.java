@@ -1,9 +1,18 @@
 package Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import facebooklite.UserDao;
 import facebooklite.User;
+import javafx.stage.Stage;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class RegController {
@@ -21,6 +30,9 @@ public class RegController {
 
     @FXML
     private TextField password;
+
+    @FXML
+    private Label userFeedBack;
 
     @FXML
     private void registerUser() throws SQLException {
@@ -82,16 +94,26 @@ public class RegController {
             if ( UserDao.userExists(userName.getText())){
                 System.out.println("User exists");
                 userName.setPromptText("User name already exists");
+
                 userName.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
             }else{
                 System.out.println("User does not exist. User will be added");
                 User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userName.getText(), password.getText());
                 UserDao.insertUser(user);
                 UserDao.updateUserSaltAndPass(userName.getText(), user.getSalt(), user.getHashedPassword());
+
                 System.out.println("User added successfully!");
             }
         }
 
+    }
+
+    public void openMainFXML(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent mainFXMLParent = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        Scene mainFXMLScene = new Scene(mainFXMLParent);
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(mainFXMLScene);
+        window.show();
     }
 
     private boolean containsSpaceOrIsEmpty(String text) {
@@ -100,4 +122,5 @@ public class RegController {
         }
         return false;
     }
+
 }

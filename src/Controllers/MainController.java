@@ -96,4 +96,13 @@ public class MainController {
         }
     }
 
+    @FXML
+    private void openResetOneFXML(ActionEvent event) throws IOException {
+        Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/resetOne.fxml"));
+        Scene regFXMLScene = new Scene(regFXMLParent);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(regFXMLScene);
+        window.show();
+    }
+
 }
