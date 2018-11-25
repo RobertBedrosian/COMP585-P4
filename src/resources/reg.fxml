@@ -35,8 +35,8 @@
             <Label fx:id="userFeedBack" layoutX="80.0" layoutY="275.0" prefHeight="17.0" prefWidth="235.0" text="One or more fields are missing" textFill="#f00a0a" visible="false" />
             <Label layoutX="39.0" layoutY="238.0" prefHeight="26.0" prefWidth="37.0" text="Email:" />
             <TextField fx:id="userEmail" layoutX="106.0" layoutY="239.0" />
-            <Label layoutX="47.0" layoutY="275.0" text="Username in use. Please choose another" textFill="#e30707" visible="false" />
-            <Label layoutX="10.0" layoutY="274.0" text="Registration successful. Return to the log in page" textFill="#2c7026">
+            <Label fx:id="userNameTaken" layoutX="47.0" layoutY="275.0" text="Username in use. Please choose another" textFill="#e30707" visible="false" />
+            <Label fx:id="registrationSuccessful" layoutX="10.0" layoutY="274.0" text="Registration successful. Return to the log in page" textFill="#2c7026" visible="false">
                <font>
                   <Font size="13.0" />
                </font>

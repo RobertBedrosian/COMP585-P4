@@ -30,7 +30,7 @@ public class MainController {
         System.out.println("In MainController initialize()");
         MainControllerDao.createDB("Comp585Project4");
         MainControllerDao.createTable("CREATE TABLE IF NOT EXISTS Users(\n" +
-             "FirstName varchar(255),LastName varchar(255), Age int, UserName varchar(255), Salt BLOB, HashedPassword BLOB, PRIMARY KEY(UserName))");
+             "FirstName varchar(255),LastName varchar(255), Age int, Email varchar(255), UserName varchar(255), Salt BLOB, HashedPassword BLOB, PRIMARY KEY(UserName))");
 
     }
 
@@ -38,9 +38,7 @@ public class MainController {
     private void openRegFXML(ActionEvent event) throws IOException {
         Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/reg.fxml"));
         Scene regFXMLScene = new Scene(regFXMLParent);
-
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
         window.setScene(regFXMLScene);
         window.show();
     }

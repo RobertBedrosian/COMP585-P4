@@ -26,6 +26,9 @@ public class RegController {
     private TextField age;
 
     @FXML
+    private TextField userEmail;
+
+    @FXML
     private TextField userName;
 
     @FXML
@@ -35,12 +38,18 @@ public class RegController {
     private Label userFeedBack;
 
     @FXML
-    private void registerUser() throws SQLException {
+    private Label registrationSuccessful;
 
+    @FXML
+    private Label userNameTaken;
+
+    @FXML
+    private void registerUser() throws SQLException {
 
         boolean fNameProvided = false;
         boolean lNameProvided = false;
         boolean ageProvided = false;
+        boolean emailProvided = false;
         boolean unameProvided = false;
         boolean passwordProvided = false;
 
@@ -72,6 +81,15 @@ public class RegController {
             age.setStyle(null);
         }
 
+        if(containsSpaceOrIsEmpty(userEmail.getText())){
+            userEmail.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
+            emailProvided = false;
+        }
+        else{
+            emailProvided = true;
+            userEmail.setStyle(null);
+        }
+
         if(containsSpaceOrIsEmpty(userName.getText())){
             userName.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
             unameProvided = false;
@@ -89,18 +107,18 @@ public class RegController {
             password.setStyle(null);
         }
 
-        if(fNameProvided && lNameProvided && ageProvided && unameProvided && passwordProvided){
+        if(fNameProvided && lNameProvided && ageProvided && emailProvided && unameProvided && passwordProvided){
             /**Check if user name is Unique (since it is our primary key)*/
             if ( UserDao.userExists(userName.getText())){
-                System.out.println("User exists");
                 userName.setPromptText("User name already exists");
-
                 userName.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
+                userNameTaken.setVisible(true);
             }else{
                 System.out.println("User does not exist. User will be added");
-                User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userName.getText(), password.getText());
+                User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userEmail.getText(), userName.getText(), password.getText());
                 UserDao.insertUser(user);
                 UserDao.updateUserSaltAndPass(userName.getText(), user.getSalt(), user.getHashedPassword());
+                registrationSuccessful.setVisible(true);
 
                 System.out.println("User added successfully!");
             }

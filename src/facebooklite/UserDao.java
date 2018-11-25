@@ -10,9 +10,9 @@ public class UserDao  {
     public static void insertUser(User user) {
         String statemet =
                         "INSERT INTO users\n" +
-                        "(FirstName, LastName, Age, UserName)\n" +
+                        "(FirstName, LastName, Age, Email ,UserName)\n" +
                         " VALUES\n" +
-                        "( '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getAge()+"', '"+user.getUserName()+"');\n" ;
+                        "( '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getAge()+"',  '"+user.getEmail()+"' ,'"+user.getUserName()+"');\n" ;
 
         try{
             DBUtil.dbExecuteUpdate(statemet);
@@ -41,6 +41,7 @@ public class UserDao  {
             user.setFirstName(rs.getString("FirstName"));
             user.setLastName(rs.getString("LastName"));
             user.setAge(rs.getInt("Age"));
+            user.setEmail(rs.getString("Email"));
             user.setUserName(rs.getString("UserName"));
             user.setSalt(rs.getBytes("Salt"));
             user.setHashedPassword(rs.getBytes("HashedPassword"));
@@ -63,8 +64,7 @@ public class UserDao  {
         DBUtil.dbUpdateSaltAndPass(userName, salt, hashCode);
     }
 
-    public static void updateUser(String username) {
-
+    public static void updateUser(String statement) {
     }
 
 

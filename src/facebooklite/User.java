@@ -7,17 +7,18 @@ public class User {
     private String userName;
     private byte[] salt;
     private byte[] hashedPassword;
-
+    private String email;
 
     public User (){
 
     }
 
     //This constructor is to used when creating a new profile
-    public User (String firstName, String lastName, int age, String userName, String password){
+    public User (String firstName, String lastName, int age, String email, String userName, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.email = email;
         this.userName = userName;
 
         Password tmpPass = new Password(password);
@@ -49,6 +50,11 @@ public class User {
         return hashedPassword;
     }
 
+    public String getEmail(){
+        return email;
+    }
+
+
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
@@ -59,6 +65,10 @@ public class User {
 
     public void setAge(int age){
         this.age = age;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public void setUserName(String userName){
