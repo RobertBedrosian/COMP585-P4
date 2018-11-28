@@ -82,8 +82,9 @@ public class DBUtil {
             conn = dbConnect();
 
             PreparedStatement prepStmt = conn.prepareStatement(sqlStatement);
-            prepStmt.setBytes(1, (byte[]) args[0]);
-            prepStmt.setBytes(2, (byte[]) args[1]);
+            for(int i = 0; i < args.length; i++) {
+                prepStmt.setBytes(i+1, (byte[]) args[i]);
+            }
 
             prepStmt.execute();
 
