@@ -1,6 +1,5 @@
 package Controllers;
 
-import facebooklite.MainControllerDao;
 import facebooklite.Password;
 import facebooklite.User;
 import facebooklite.UserDao;
@@ -26,15 +25,6 @@ public class MainController {
     private TextField password;
 
     @FXML
-    private void initialize() throws SQLException {
-        System.out.println("In MainController initialize()");
-        MainControllerDao.createDB("Comp585Project4");
-        MainControllerDao.createTable("CREATE TABLE IF NOT EXISTS Users(\n" +
-             "FirstName varchar(255),LastName varchar(255), Age int, Email varchar(255), UserName varchar(255), Salt BLOB, HashedPassword BLOB, PRIMARY KEY(UserName))");
-
-    }
-
-    @FXML
     private void openRegFXML(ActionEvent event) throws IOException {
         Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/reg.fxml"));
         Scene regFXMLScene = new Scene(regFXMLParent);
@@ -46,11 +36,11 @@ public class MainController {
     @FXML
     private void login(ActionEvent event) throws SQLException, IOException {
         if (uname.getText().equals("")){
-
+            // change box outline?
         }
 
         if(password.getText().equals("")) {
-
+            // change box outline?
         }
 
         if(!uname.getText().equals("") && !password.getText().equals("")){
@@ -77,10 +67,12 @@ public class MainController {
 
                 }else{
                     System.out.println("Incorrect username and/or Password");
+                    // Show text for user to know they entered wrong credentials
                 }
             }
             else{
-                System.out.println("Incorrect user name");
+                System.out.println("Username does not exists");
+                // Show text for user to know they entered wrong username
             }
         }
         else{

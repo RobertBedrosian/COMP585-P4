@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class DBUtil {
     private static Connection conn;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost/Comp585Project4";
-    private static final String user = "root";
-    private static String pass = null;
+    private static final String url = "jdbc:mysql://localhost/facebook_lite";
+    private static final String user = "db_user";
+    private static final String password = "password";
 
 
     public DBUtil(){
@@ -20,23 +20,14 @@ public class DBUtil {
 
     /**This method sets up a connection with the DB.*/
     private static Connection dbConnect() throws SQLException {
-
-        while(true){
-
-            if(pass == null  ){
-                pass = getDBPassword();
-            }
-
-            try{
-                conn = DriverManager.getConnection(url, user, pass);
-
-                return conn;
-            } catch (SQLException e) {
-                System.out.println("Wrong password.");
-                pass = getDBPassword();
-            }
+        try{
+            conn = DriverManager.getConnection(url, user, password);
+            return conn;
+        } catch (SQLException e) {
+            System.out.println("Error in SQL connection.");
+            e.printStackTrace();
         }
-
+        return null;
     }
 
     private static void dbDisconnect() throws SQLException {
@@ -53,7 +44,7 @@ public class DBUtil {
         try{
             conn = dbConnect();
 
-            /**Gives us a blanck statement object*/
+            /**Gives us a blank statement object*/
             statement = conn.createStatement();
 
             resultSet = statement.executeQuery(queryStatement);
@@ -65,7 +56,7 @@ public class DBUtil {
 
         }
         catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         finally {
             if( resultSet != null){
@@ -85,22 +76,20 @@ public class DBUtil {
     /**This method is used to Update, Add, or Remove data in the DB
      *
      * */
-    public static void dbExecuteUpdate(String sqlStatement) throws SQLException {
-        Statement statement = null;
-
+    public static void dbExecuteUpdate(String sqlStatement, Object... args) throws SQLException {
+        System.out.println(sqlStatement);
         try{
             conn = dbConnect();
 
-            statement = conn.createStatement();
-            statement.executeUpdate(sqlStatement);
+            PreparedStatement prepStmt = conn.prepareStatement(sqlStatement);
+            prepStmt.setBytes(1, (byte[]) args[0]);
+            prepStmt.setBytes(2, (byte[]) args[1]);
+
+            prepStmt.execute();
 
         } catch (SQLException e) {
             System.out.println(e);
         }finally {
-            if (statement != null){
-                statement.close();
-            }
-
             dbDisconnect();
         }
     }
@@ -109,7 +98,7 @@ public class DBUtil {
         String statement = null;
         try{
             conn = dbConnect();
-            statement = "UPDATE users SET Salt= ?, HashedPassword=? WHERE username = '"+userName+"' ";
+            statement = "UPDATE users SET salt=?, password=? WHERE username = '"+userName+"' ";
 
             PreparedStatement prepStmt = conn.prepareStatement(statement);
             prepStmt.setBytes(1, salt);
@@ -121,15 +110,4 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
-
-
-    /**Asks for the admins password to establish a connection.*/
-    private static String getDBPassword() {
-        System.out.print("Admin, enter your DB password:\t");
-        Scanner in = new Scanner(System.in);
-        System.out.println();
-        String pass = in.nextLine();
-        return pass;
-    }
-
 }

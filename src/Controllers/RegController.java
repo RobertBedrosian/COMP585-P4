@@ -60,7 +60,6 @@ public class RegController {
         else{
             fNameProvided = true;
             firstName.setStyle(null);
-
         }
 
         if(containsSpaceOrIsEmpty(lastName.getText())){
@@ -109,7 +108,7 @@ public class RegController {
 
         if(fNameProvided && lNameProvided && ageProvided && emailProvided && unameProvided && passwordProvided){
             /**Check if user name is Unique (since it is our primary key)*/
-            if ( UserDao.userExists(userName.getText())){
+            if (UserDao.userExists(userName.getText())){
                 userName.setPromptText("User name already exists");
                 userName.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
                 userNameTaken.setVisible(true);
@@ -117,7 +116,6 @@ public class RegController {
                 System.out.println("User does not exist. User will be added");
                 User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userEmail.getText(), userName.getText(), password.getText());
                 UserDao.insertUser(user);
-                UserDao.updateUserSaltAndPass(userName.getText(), user.getSalt(), user.getHashedPassword());
                 registrationSuccessful.setVisible(true);
 
                 System.out.println("User added successfully!");

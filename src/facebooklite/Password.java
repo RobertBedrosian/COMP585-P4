@@ -69,7 +69,7 @@ public class Password {
 
     public boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
         byte [] tmpHashCode = hashPassword(passwordPlainText, salt);
-
+        System.out.println(passwordPlainText + " " + salt + " " +tmpHashCode);
 //        for (byte i: tmpHashCode){
 //            System.out.print(i);
 //        }
