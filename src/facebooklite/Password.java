@@ -21,9 +21,22 @@ public class Password {
     private SecretKeySpec secretKey;
     private String hashedPass="";
 
+    public Password(){
+
+    }
+
+    /**This constructor is to be used when authenticating a user account*/
+    public Password(String password, byte[] salt, byte[] hashPassword){
+        this.salt = salt;
+        this.hashCode = hashPassword;
+    }
+
     //used when creating a new account
+    //This constructor creates a salt and hashed version of the user's password.
     public Password(String password){
         salt = createSalt(SIZE_OF_SALT);
+        /**Salted-Hash*/
+        hashCode = hashPassword(password,salt);
 
         /**To be used with AES encryption*/
 //        this.secretKey = createSecretKey(password, salt);
@@ -31,16 +44,8 @@ public class Password {
 //
 //        System.out.println(decryptPassword(hashedPass,secretKey));
 
-        /**Salted-Hash*/
-        hashCode = hashPassword(password,salt);
-        for (byte i: hashCode){
-            System.out.print(i);
-        }
-        System.out.println();
-
-        matchesStoredHashedPassword(password, salt, hashCode);
-
     }
+
 
     /**Hashes a password. Returns null if the password could not be hashed*/
     private byte[] hashPassword(String password, byte [] salt) {
@@ -62,8 +67,14 @@ public class Password {
         return null;
     }
 
-    private boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
+    public boolean matchesStoredHashedPassword(String passwordPlainText, byte [] salt, byte [] hashCode){
         byte [] tmpHashCode = hashPassword(passwordPlainText, salt);
+        System.out.println(passwordPlainText + " " + salt + " " +tmpHashCode);
+//        for (byte i: tmpHashCode){
+//            System.out.print(i);
+//        }
+//        System.out.println();
+
         if (tmpHashCode.length != hashCode.length){
             return false;
         }
@@ -75,21 +86,38 @@ public class Password {
             }
         }
 
-        for (byte i: tmpHashCode){
-            System.out.print(i);
-        }
-        System.out.println();
-
         return true;
     }
 
-
-
-    //used when loading an existing account
-    public Password(String salt, String hashedPass){
-
+    /**Creates a random number (salt)*/
+    private byte[] createSalt(int SIZE_OF_SALT) {
+        Random randomNum = new SecureRandom();
+        salt = new byte[SIZE_OF_SALT];
+        randomNum.nextBytes(salt);
+        return salt;
     }
 
+    public byte[] getSalt(){
+        return salt;
+    }
+
+    public byte[] getHashedPassword(){
+        return hashCode;
+    }
+
+    public void setSalt(byte[] salt){
+        this.salt = salt;
+    }
+
+    public void setHashCode(byte[] hashCode ){
+        this.hashCode = hashCode;
+    }
+
+
+    /*********************************************************************888
+     *
+     * METHODS BELOW WILL NOT BE USED FOR THIS PROJECT
+     */
     private String createEncryptedPassword(String password, SecretKeySpec secretKey) {
         Cipher pbeCipher;
         byte [] cipherText = null;
@@ -176,20 +204,4 @@ public class Password {
         return new SecretKeySpec(key.getEncoded(), "AES");
     }
 
-
-    /**Creates a random number (salt)*/
-    private byte[] createSalt(int SIZE_OF_SALT) {
-        Random randomNum = new SecureRandom();
-        salt = new byte[SIZE_OF_SALT];
-        randomNum.nextBytes(salt);
-        return salt;
-    }
-
-    public String getSalt(){
-        return new String(salt);
-    }
-
-    public String getHashedPassword(){
-        return hashedPass;
-    }
 }

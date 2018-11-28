@@ -14,21 +14,21 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="image" fitHeight="250.0" fitWidth="250.0" layoutX="96.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="userImage" fitHeight="250.0" fitWidth="250.0" layoutX="96.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="445.0" layoutY="355.0" stroke="DODGERBLUE" strokeType="INSIDE" width="1200.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="400.0" layoutX="356.0" stroke="DODGERBLUE" strokeType="INSIDE" width="844.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="400.0" stroke="DODGERBLUE" strokeType="INSIDE" width="85.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="85.0" stroke="DODGERBLUE" strokeType="INSIDE" width="271.0" />
-            <Label fx:id="fname" layoutX="370.0" layoutY="86.0" text="{FIRSTNAME}" textFill="WHITE">
+            <Label fx:id="firstName" layoutX="370.0" layoutY="86.0" text="{FIRSTNAME}" textFill="WHITE">
                <font>
                   <Font name="Kalimati" size="45.0" />
                </font>
             </Label>
-            <Label fx:id="lname" layoutX="370.0" layoutY="141.0" text="{LASTNAME}" textFill="WHITE">
+            <Label fx:id="lastName" layoutX="370.0" layoutY="141.0" text="{LASTNAME}" textFill="WHITE">
                <font>
                   <Font name="Kalimati" size="45.0" />
                </font>
@@ -48,12 +48,12 @@
                   <Font name="Kalimati" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="editstatus" layoutX="372.0" layoutY="310.0" mnemonicParsing="false" text="Edit Status">
+            <Button layoutX="372.0" layoutY="310.0" mnemonicParsing="false" onAction="#changeStatus" text="Edit Status">
                <font>
                   <Font name="Kalimati" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="settings" layoutX="499.0" layoutY="310.0" mnemonicParsing="false" text="Settings">
+            <Button layoutX="499.0" layoutY="310.0" mnemonicParsing="false" onAction="#showSettings" text="Settings">
                <font>
                   <Font name="Kalimati" size="18.0" />
                </font>
@@ -62,8 +62,8 @@
                <content>
                   <TableView fx:id="friendTable" editable="true" prefHeight="280.0" prefWidth="380.0">
                     <columns>
-                      <TableColumn fx:id="namecol" maxWidth="190.0" minWidth="190.0" prefWidth="190.0" resizable="false" text="Friends" />
-                      <TableColumn fx:id="profilecol" maxWidth="190.0" minWidth="190.0" prefWidth="190.0" resizable="false" text="Profiles" />
+                      <TableColumn maxWidth="190.0" minWidth="190.0" prefWidth="190.0" resizable="false" text="Friends" />
+                      <TableColumn maxWidth="190.0" minWidth="190.0" prefWidth="190.0" resizable="false" text="Profiles" />
                     </columns>
                   </TableView>
                </content>
@@ -78,8 +78,8 @@
                   <Font name="Kalimati" size="34.0" />
                </font>
             </Label>
-            <TextField fx:id="newpost" layoutX="85.0" layoutY="430.0" prefHeight="120.0" prefWidth="400.0" />
-            <Button fx:id="newPostSubmit" layoutX="443.0" layoutY="565.0" mnemonicParsing="false" text="Post" />
+            <TextField fx:id="newPost" layoutX="85.0" layoutY="430.0" prefHeight="120.0" prefWidth="400.0" />
+            <Button layoutX="443.0" layoutY="565.0" mnemonicParsing="false" onAction="#submitPost" text="Post" />
             <Label layoutX="679.0" layoutY="363.0" text="Your Feed" textFill="WHITE">
                <font>
                   <Font name="Kalimati" size="34.0" />

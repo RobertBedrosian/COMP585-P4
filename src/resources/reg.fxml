@@ -7,25 +7,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.control.PasswordField?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facebooklite.Controllers.RegController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="390.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="23.0" layoutY="64.0" text="First Name:" />
             <Label layoutX="23.0" layoutY="99.0" text="Last Name:" />
             <Label layoutX="46.0" layoutY="136.0" text="Age:" />
             <Label layoutX="25.0" layoutY="173.0" text="Username:" />
             <Label layoutX="28.0" layoutY="209.0" text="Password:" />
-            <TextField layoutX="107.0" layoutY="59.0" />
-            <TextField layoutX="107.0" layoutY="94.0" />
-            <TextField layoutX="107.0" layoutY="131.0" />
-            <TextField layoutX="107.0" layoutY="168.0" />
-            <TextField layoutX="107.0" layoutY="204.0" />
-            <Button layoutX="117.0" layoutY="252.0" mnemonicParsing="false" text="Submit" />
-            <Label layoutX="89.0" layoutY="14.0" text="Registration">
+            <TextField fx:id="firstName" layoutX="107.0" layoutY="59.0" />
+            <TextField fx:id="lastName" layoutX="107.0" layoutY="94.0" />
+            <TextField fx:id="age" layoutX="107.0" layoutY="131.0" />
+            <TextField fx:id="userName" layoutX="107.0" layoutY="168.0" />
+            <PasswordField fx:id="password" layoutX="107.0" layoutY="204.0" />
+            <Button layoutX="93.0" layoutY="304.0" mnemonicParsing="false" onAction="#registerUser" text="Submit" />
+            <Label layoutX="100.0" layoutY="14.0" text="Registration">
                <font>
                   <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="login" layoutX="165.0" layoutY="304.0" mnemonicParsing="false" onAction="#openMainFXML" text="Back" />
+            <Label fx:id="userFeedBack" layoutX="80.0" layoutY="275.0" prefHeight="17.0" prefWidth="235.0" text="One or more fields are missing" textFill="#f00a0a" visible="false" />
+            <Label layoutX="39.0" layoutY="238.0" prefHeight="26.0" prefWidth="37.0" text="Email:" />
+            <TextField fx:id="userEmail" layoutX="106.0" layoutY="239.0" />
+            <Label fx:id="userNameTaken" layoutX="47.0" layoutY="275.0" text="Username in use. Please choose another" textFill="#e30707" visible="false" />
+            <Label fx:id="registrationSuccessful" layoutX="10.0" layoutY="274.0" text="Registration successful. Return to the log in page" textFill="#2c7026" visible="false">
+               <font>
+                  <Font size="13.0" />
                </font>
             </Label>
          </children>
