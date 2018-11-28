@@ -51,7 +51,7 @@ public class DashBoardController {
     public void initialize() {
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
-        age.setText(String.valueOf(user.getAge()));
+        age.setText(String.valueOf(user.getAge()) + " Years old");
         status.setText(user.getStatus());
         initializeFriends();
         initializeFeed();
