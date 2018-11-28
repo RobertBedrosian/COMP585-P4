@@ -1,7 +1,6 @@
-package Controllers;
+package facebooklite.Controllers;
 
 import facebooklite.Password;
-import facebooklite.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

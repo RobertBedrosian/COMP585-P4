@@ -1,4 +1,4 @@
-package Controllers;
+package facebooklite.Controllers;
 
 import facebooklite.Password;
 import facebooklite.User;
@@ -59,7 +59,9 @@ public class MainController {
                     System.out.println("Successfully logged in");
 
                     /**Switch scenes--to the dashboard-- if correct credentials*/
-                    Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/dashBoard.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashBoard.fxml"));
+                    loader.setController(new DashBoardController(user));
+                    Parent regFXMLParent = loader.load();
                     Scene regFXMLScene = new Scene(regFXMLParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(regFXMLScene);

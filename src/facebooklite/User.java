@@ -8,6 +8,7 @@ public class User {
     private byte[] salt;
     private byte[] hashedPassword;
     private String email;
+    private String status;
 
     public User (){
 
@@ -54,6 +55,9 @@ public class User {
         return email;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     public void setFirstName(String firstName){
         this.firstName = firstName;

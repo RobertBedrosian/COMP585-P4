@@ -1,4 +1,4 @@
-package Controllers;
+package facebooklite.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

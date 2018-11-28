@@ -1,4 +1,4 @@
-package Controllers;
+package facebooklite.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,6 @@ import facebooklite.UserDao;
 import facebooklite.User;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 

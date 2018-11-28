@@ -1,4 +1,4 @@
-package dbutil;
+package facebooklite;
 
 import com.sun.rowset.CachedRowSetImpl;
 

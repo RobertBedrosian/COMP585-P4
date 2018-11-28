@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
               username TEXT NOT NULL,
               age INT NOT NULL,
               password BLOB NOT NULL,
-              salt BLOB Not NULL,
+              salt BLOB NOT NULL,
               status TINYTEXT,
               age_visibility boolean DEFAULT 1,
               status_visibility boolean DEFAULT 1,

@@ -1,6 +1,5 @@
 package facebooklite;
 
-import dbutil.DBUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
