@@ -1,4 +1,4 @@
-## Requirments
+## Requirements
 1. Use of DAO pattern
 2. User shall be able to
    1. <s>Register</s>
