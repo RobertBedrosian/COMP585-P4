@@ -26,7 +26,7 @@ public class MainController {
 
     @FXML
     private void openRegFXML(ActionEvent event) throws IOException {
-        Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/reg.fxml"));
+        Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/registration.fxml"));
         Scene regFXMLScene = new Scene(regFXMLParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(regFXMLScene);
