@@ -34,9 +34,6 @@ public class RegController {
     private TextField password;
 
     @FXML
-    private Label userFeedBack;
-
-    @FXML
     private Label registrationSuccessful;
 
     @FXML
@@ -114,7 +111,8 @@ public class RegController {
             }else{
                 System.out.println("User does not exist. User will be added");
                 User user = new User(firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()), userEmail.getText(), userName.getText(), password.getText());
-                UserDao.insertUser(user);
+                UserDao.createUser(user);
+                userNameTaken.setVisible(false);
                 registrationSuccessful.setVisible(true);
 
                 System.out.println("User added successfully!");

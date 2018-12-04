@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class UserDao  {
 
-    public static void insertUser(User user) {
+    public static void createUser(User user) {
         String statement =
                         "INSERT INTO users\n" +
                         "(first_name, last_name, age, email ,username, password, salt)\n" +
@@ -33,11 +33,11 @@ public class UserDao  {
         }
     }
 
-
-    public static User getUserFromResultSet(ResultSet rs) throws SQLException {
+    private static User getUserFromResultSet(ResultSet rs) throws SQLException {
         User user = null;
         if (rs != null) {
             user = new User();
+            user.setId(rs.getInt("id"));
             user.setFirstName(rs.getString("first_name"));
             user.setLastName(rs.getString("last_name"));
             user.setAge(rs.getInt("age"));
@@ -45,6 +45,7 @@ public class UserDao  {
             user.setUserName(rs.getString("username"));
             user.setSalt(rs.getBytes("salt"));
             user.setHashedPassword(rs.getBytes("password"));
+            user.setStatus(rs.getString("status"));
         }
         return user;
     }
@@ -63,7 +64,9 @@ public class UserDao  {
         DBUtil.dbUpdateSaltAndPass(userName, salt, hashCode);
     }
 
-    public static void updateUser(String statement) {
+    public static void updateStatus(User user, String newStatus) throws SQLException{
+        DBUtil.dbExecuteUpdate("UPDATE users SET status=? WHERE id=?", newStatus, user.getId());
+        user.setStatus(newStatus);
     }
 
 

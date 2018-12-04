@@ -88,8 +88,8 @@
             <Button fx:id="addPost" layoutX="604.0" layoutY="124.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
             <ButtonBar layoutX="708.0" layoutY="527.0" prefHeight="40.0" prefWidth="274.0">
                <buttons>
-                  <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addTheFriend" text="Add Friend" />
-                  <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeTheFriend" text="Remove Friend" />
+                  <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
+                  <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriend" text="Remove Friend" />
                </buttons>
             </ButtonBar>
             <Label layoutX="781.0" layoutY="46.0" text="Friends List">
@@ -128,7 +128,7 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <Button fx:id="removePost" layoutX="499.0" layoutY="534.0" mnemonicParsing="false" onAction="#removeThePost" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
+            <Button fx:id="removePost" layoutX="499.0" layoutY="534.0" mnemonicParsing="false" onAction="#removePosts" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
             <TextArea fx:id="newPost" layoutX="14.0" layoutY="56.0" prefHeight="95.0" prefWidth="569.0" />
          </children>
       </Pane>

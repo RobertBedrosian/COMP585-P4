@@ -1,22 +1,28 @@
 package facebooklite.Controllers;
 
+import facebooklite.FriendsDao;
+import facebooklite.PostsDao;
 import facebooklite.User;
+import facebooklite.UserDao;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DashBoardController {
     private User user;
 
     @FXML
-    ImageView userImage;
-    @FXML
-    Label firstName;
-    @FXML
-    Label lastName;
+    Label fullname;
     @FXML
     Label age;
     @FXML
@@ -24,9 +30,9 @@ public class DashBoardController {
     @FXML
     TableView friendTable;
     @FXML
-    TextField newPost;
+    TextArea newPost;
     @FXML
-    TextArea userFeed;
+    TableView userFeed;
 
     public DashBoardController(User user){
         this.user = user;
@@ -34,7 +40,19 @@ public class DashBoardController {
 
     @FXML
     public void changeStatus() {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifyStatus.fxml"));
+        loader.setController(new ModifyStatusController(user));
+        Stage stage = new Stage();
+        try {
+            Parent page = loader.load();
+            stage.setTitle("Modify Status");
+            stage.setScene(new Scene(page));
+            stage.showAndWait();
+            updateStatus();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -48,19 +66,77 @@ public class DashBoardController {
     }
 
     @FXML
+    public void removePosts() {
+
+    }
+
+    @FXML
+    public void addFriend() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/friendSelector.fxml"));
+        loader.setController(new AddFriendController(user));
+        Stage stage = new Stage();
+        try {
+            Parent page = loader.load();
+            stage.setTitle("Add Friend");
+            stage.setScene(new Scene(page));
+            stage.show();
+            updateStatus();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void removeFriend() {
+
+    }
+
+    @FXML
+    public void logout() {
+
+    }
+
+    @FXML
     public void initialize() {
-        firstName.setText(user.getFirstName());
-        lastName.setText(user.getLastName());
+        fullname.setText(user.getFirstName() + " " + user.getLastName());
         age.setText(String.valueOf(user.getAge()) + " Years old");
-        status.setText(user.getStatus());
+        updateStatus();
         initializeFriends();
         initializeFeed();
     }
 
     private void initializeFeed() {
+        try {
+            ArrayList<User> friendList = PostsDao.getPosts(user);
+            if(friendList.size() > 0) {
+                for(User u : friendList) {
+                    System.out.println(u.getFirstName());
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initializeFriends() {
+        try {
+            ArrayList<User> friendList = FriendsDao.getFriends(user);
+            if(friendList.size() > 0) {
+                for(User u : friendList) {
+                    System.out.println(u.getFirstName());
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+
+    private void updateStatus() {
+        System.out.println(user.getStatus());
+        status.setText(user.getStatus());
     }
 }

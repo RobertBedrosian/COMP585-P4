@@ -1,6 +1,7 @@
 package facebooklite;
 
 public class User {
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
@@ -25,6 +26,10 @@ public class User {
         Password tmpPass = new Password(password);
         this.salt = tmpPass.getSalt();
         this.hashedPassword = tmpPass.getHashedPassword();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName(){
@@ -59,6 +64,8 @@ public class User {
         return status;
     }
 
+    public void setId(int id) { this.id = id; }
+
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
@@ -85,5 +92,9 @@ public class User {
 
     public void setHashedPassword(byte [] hashedPassword){
         this.hashedPassword = hashedPassword;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

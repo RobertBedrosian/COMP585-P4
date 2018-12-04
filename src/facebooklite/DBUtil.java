@@ -13,10 +13,7 @@ public class DBUtil {
     private static final String password = "password";
 
 
-    public DBUtil(){
-
-    }
-
+    public DBUtil(){ }
 
     /**This method sets up a connection with the DB.*/
     private static Connection dbConnect() throws SQLException {
@@ -37,59 +34,45 @@ public class DBUtil {
     }
 
     /**This method is used when fetching data from the DB.*/
-    public static ResultSet dbExecuteQuery(String queryStatement) throws SQLException {
-        Statement statement = null;
-        ResultSet resultSet = null;
+    public static ResultSet dbExecuteQuery(String queryStatement, Object... args) throws SQLException {
         CachedRowSetImpl crs = null;
         try{
             conn = dbConnect();
 
-            /**Gives us a blank statement object*/
-            statement = conn.createStatement();
+            PreparedStatement prepStmt = conn.prepareStatement(queryStatement);
+            for(int i = 0; i < args.length; i++) {
+                prepStmt.setObject(i+1, args[i]);
+            }
 
-            resultSet = statement.executeQuery(queryStatement);
-
+            ResultSet resultSet = prepStmt.executeQuery();
             /**Stores data in memory so that we can work on the data without keeping the connection alive
              * with the DB*/
             crs = new CachedRowSetImpl();
             crs.populate(resultSet);
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
-            if( resultSet != null){
-                resultSet.close();
-            }
-            if (statement != null){
-                statement.close();
-            }
-
             dbDisconnect();
         }
         return crs;
     }
 
-
-
-    /**This method is used to Update, Add, or Remove data in the DB
-     *
-     * */
+    /**This method is used to Update, Add, or Remove data in the DB* */
     public static void dbExecuteUpdate(String sqlStatement, Object... args) throws SQLException {
-        System.out.println(sqlStatement);
         try{
             conn = dbConnect();
 
             PreparedStatement prepStmt = conn.prepareStatement(sqlStatement);
             for(int i = 0; i < args.length; i++) {
-                prepStmt.setBytes(i+1, (byte[]) args[i]);
+                prepStmt.setObject(i+1, args[i]);
             }
 
             prepStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }finally {
             dbDisconnect();
         }
