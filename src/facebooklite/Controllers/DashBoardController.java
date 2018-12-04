@@ -93,8 +93,13 @@ public class DashBoardController {
     }
 
     @FXML
-    public void logout() {
-
+    public void logout(ActionEvent event) throws IOException{
+        Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        Scene regFXMLScene = new Scene(regFXMLParent);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(regFXMLScene);
+        window.show();
+        System.out.println("Logged out");
     }
 
     @FXML
@@ -136,7 +141,6 @@ public class DashBoardController {
 
 
     private void updateStatus() {
-        System.out.println(user.getStatus());
         status.setText(user.getStatus());
     }
 }

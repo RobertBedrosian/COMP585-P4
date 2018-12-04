@@ -77,7 +77,7 @@
                 <Button fx:id="settings" mnemonicParsing="false" onAction="#showSettings" text="Settings" />
               </buttons>
             </ButtonBar>
-            <Button fx:id="logout" layoutX="919.0" layoutY="153.0" mnemonicParsing="false" text="Logout" />
+            <Button fx:id="logout" layoutX="919.0" layoutY="153.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
          </children>
       </AnchorPane>
    </top>
