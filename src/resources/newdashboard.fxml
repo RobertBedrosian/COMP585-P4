@@ -71,7 +71,7 @@
                   <Font name="Roboto Regular" size="18.0" />
                </font>
             </Label>
-            <ButtonBar layoutX="217.0" layoutY="146.0" prefHeight="40.0" prefWidth="210.0">
+            <ButtonBar layoutX="190.0" layoutY="146.0" prefHeight="40.0" prefWidth="210.0">
               <buttons>
                   <Button fx:id="statusButton" mnemonicParsing="false" onAction="#changeStatus" text="Edit status" />
                 <Button fx:id="settings" mnemonicParsing="false" onAction="#showSettings" text="Settings" />
@@ -85,7 +85,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Line endX="100.0" endY="341.0" layoutX="599.0" layoutY="266.0" startX="100.0" startY="-266.0" stroke="#8a8a8a" />
-            <Button fx:id="addPost" layoutX="579.0" layoutY="124.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
+            <Button fx:id="addPost" layoutX="604.0" layoutY="124.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
             <ButtonBar layoutX="708.0" layoutY="527.0" prefHeight="40.0" prefWidth="274.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addTheFriend" text="Add Friend" />
@@ -117,15 +117,13 @@
             </TableView>
             <TableView fx:id="friendTable" layoutX="707.0" layoutY="101.0" prefHeight="346.0" prefWidth="311.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Friends" />
-                <TableColumn prefWidth="75.0" text="Profiles" />
+                <TableColumn prefWidth="135.0" text="Friends" />
+                <TableColumn prefWidth="100.0" text="Profiles" />
+                  <TableColumn prefWidth="75.0" text="Remove" />
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
             <Button fx:id="removePost" layoutX="499.0" layoutY="534.0" mnemonicParsing="false" onAction="#removeThePost" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
-            <TextField fx:id="newPost" layoutX="12.0" layoutY="57.0" prefHeight="93.0" prefWidth="553.0" />
+            <TextField fx:id="newPost" layoutX="12.0" layoutY="57.0" prefHeight="93.0" prefWidth="577.0" />
          </children>
       </Pane>
    </center>
