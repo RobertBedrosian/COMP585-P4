@@ -26,7 +26,7 @@
                   <DropShadow spread="0.45" />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="someImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="216.0" layoutY="14.0" text="Welcome, " textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="18.0" />
@@ -85,35 +85,33 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Line endX="100.0" endY="341.0" layoutX="599.0" layoutY="266.0" startX="100.0" startY="-266.0" stroke="#8a8a8a" />
-            <Line endX="100.0" endY="341.0" layoutX="178.0" layoutY="259.0" startX="100.0" startY="-259.0" stroke="#8a8a8a" />
-            <Button fx:id="addPost" layoutX="95.0" layoutY="534.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
+            <Button fx:id="addPost" layoutX="579.0" layoutY="124.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
             <ButtonBar layoutX="708.0" layoutY="527.0" prefHeight="40.0" prefWidth="274.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addTheFriend" text="Add Friend" />
                   <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeTheFriend" text="Remove Friend" />
                </buttons>
             </ButtonBar>
-            <Label layoutX="781.0" layoutY="46.0" text="Friends List" underline="true">
+            <Label layoutX="781.0" layoutY="46.0" text="Friends List">
                <font>
                   <Font name="Roboto Regular" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="419.0" layoutY="46.0" text="Your Feed" underline="true">
+            <Label layoutX="277.0" layoutY="163.0" text="Your Feed">
                <font>
                   <Font name="Roboto Regular" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="49.0" text="Post something new" underline="true">
+            <Label layoutX="11.0" layoutY="14.0" text="Post something new...">
                <font>
                   <Font name="Roboto Regular" size="27.0" />
                </font>
             </Label>
-            <Pagination layoutX="278.0" layoutY="101.0" pageCount="1" prefHeight="397.0" prefWidth="420.0" />
+            <Pagination layoutY="185.0" pageCount="1" prefHeight="349.0" prefWidth="693.0" />
             <Pagination layoutX="700.0" layoutY="101.0" pageCount="1" prefHeight="398.0" prefWidth="325.0" />
-            <TextField fx:id="newPost" layoutX="11.0" layoutY="102.0" prefHeight="344.0" prefWidth="244.0" />
-            <TableView fx:id="userFeed" layoutX="292.0" layoutY="101.0" prefHeight="346.0" prefWidth="393.0">
+            <TableView fx:id="userFeed" layoutX="6.0" layoutY="213.0" prefHeight="270.0" prefWidth="674.0">
               <columns>
-                <TableColumn fx:id="postView" prefWidth="320.0" text="Posts" />
+                <TableColumn fx:id="postView" prefWidth="599.0" text="Posts" />
                 <TableColumn fx:id="removeCheck" prefWidth="75.0" text="Remove" />
               </columns>
             </TableView>
@@ -126,7 +124,8 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="removePost" layoutX="398.0" layoutY="534.0" mnemonicParsing="false" onAction="#removeThePost" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
+            <Button fx:id="removePost" layoutX="499.0" layoutY="534.0" mnemonicParsing="false" onAction="#removeThePost" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
+            <TextField fx:id="newPost" layoutX="12.0" layoutY="57.0" prefHeight="93.0" prefWidth="553.0" />
          </children>
       </Pane>
    </center>
