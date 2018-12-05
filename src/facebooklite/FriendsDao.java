@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FriendsDao {
-    // Sets use and friend as friends by adding the references in the Friends table
+    // Sets user and friend as friends by adding the references in the Friends table
     public static void addFriend(User user, User friend) {
 
     }

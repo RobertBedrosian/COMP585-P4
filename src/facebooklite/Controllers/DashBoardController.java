@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class DashBoardController {
     private User user;
@@ -113,11 +114,9 @@ public class DashBoardController {
 
     private void initializeFeed() {
         try {
-            ArrayList<String> postList = PostsDao.getPosts(user);
+            Map<Integer, String> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
-                for(String s : postList) {
-                    System.out.println(s);
-                }
+                postList.forEach((Integer id, String content) -> System.out.println(content));
             }
         }
         catch (SQLException e) {
