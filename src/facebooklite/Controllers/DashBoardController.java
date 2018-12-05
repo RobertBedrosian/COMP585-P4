@@ -58,7 +58,19 @@ public class DashBoardController {
 
     @FXML
     public void showSettings() {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/settings.fxml"));
+        loader.setController(new SettingsController(user));
+        Stage stage = new Stage();
+        try {
+            Parent page = loader.load();
+            stage.setTitle("Add Friend");
+            stage.setScene(new Scene(page));
+            stage.show();
+            updateStatus();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -137,7 +149,6 @@ public class DashBoardController {
             e.printStackTrace();
         }
     }
-
 
     private void updateStatus() {
         status.setText(user.getStatus());

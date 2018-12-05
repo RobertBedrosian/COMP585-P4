@@ -22,7 +22,8 @@ public class ModifyStatusController {
     @FXML
     public void accept() {
         try {
-            UserDao.updateStatus(user, newStatusText.getText());
+            user.setStatus(newStatusText.getText());
+            UserDao.updateStatus(user);
         }
         catch (SQLException e) {
             System.out.println("Failed to update status");

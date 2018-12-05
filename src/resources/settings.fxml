@@ -14,15 +14,15 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <CheckBox layoutX="259.0" layoutY="177.0" mnemonicParsing="false" text="Hide Age" />
+            <CheckBox fx:id="ageToggle" layoutX="259.0" layoutY="177.0" mnemonicParsing="false" text="Hide Age" />
             <Label layoutX="258.0" layoutY="129.0" text="Privacy">
                <font>
                   <Font name="Kalimati" size="27.0" />
                </font>
             </Label>
-            <CheckBox layoutX="259.0" layoutY="201.0" mnemonicParsing="false" text="Hide Posts" />
-            <CheckBox layoutX="259.0" layoutY="227.0" mnemonicParsing="false" text="Hide Status" />
-            <CheckBox layoutX="259.0" layoutY="253.0" mnemonicParsing="false" text="Hide Friends" />
+            <CheckBox fx:id="postsToggle" layoutX="259.0" layoutY="201.0" mnemonicParsing="false" text="Hide Posts" />
+            <CheckBox fx:id="statusToggle" layoutX="259.0" layoutY="227.0" mnemonicParsing="false" text="Hide Status" />
+            <CheckBox fx:id="friendsToggle" layoutX="259.0" layoutY="253.0" mnemonicParsing="false" text="Hide Friends" />
             <Line endX="75.0" layoutX="300.0" layoutY="168.0" startX="-75.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="DODGERBLUE" strokeType="INSIDE" width="600.0">
                <effect>
@@ -34,7 +34,7 @@
                   <Font name="Kalimati" size="28.0" />
                </font>
             </Label>
-            <Button layoutX="202.0" layoutY="324.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            <Button layoutX="202.0" layoutY="324.0" mnemonicParsing="false" onAction="#close" text="Cancel" />
             <Button layoutX="347.0" layoutY="324.0" mnemonicParsing="false" onAction="#save" text="Save" />
          </children>
       </Pane>

@@ -64,11 +64,14 @@ public class UserDao  {
         DBUtil.dbUpdateSaltAndPass(userName, salt, hashCode);
     }
 
-    public static void updateStatus(User user, String newStatus) throws SQLException{
-        DBUtil.dbExecuteUpdate("UPDATE users SET status=? WHERE id=?", newStatus, user.getId());
-        user.setStatus(newStatus);
+    public static void updateStatus(User user) throws SQLException {
+        DBUtil.dbExecuteUpdate("UPDATE users SET status=? WHERE id=?", user.getStatus(), user.getId());
     }
 
+    public static void updateSettings(User user, boolean age, boolean posts, boolean status, boolean friends) throws SQLException {
+        DBUtil.dbExecuteUpdate("UPDATE users SET age_visibility=?, status_visibility=?, WHERE id=?, friends_visibility=?, post_visibility=?",
+                                age, posts, status, friends, user.getId());
+    }
 
     public static void deleteUser(String userName) {
 
