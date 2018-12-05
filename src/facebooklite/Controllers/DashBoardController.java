@@ -79,11 +79,6 @@ public class DashBoardController {
     }
 
     @FXML
-    public void removePosts() {
-
-    }
-
-    @FXML
     public void addFriend() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/friendSelector.fxml"));
         loader.setController(new AddFriendController(user));
