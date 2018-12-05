@@ -1,5 +1,6 @@
 package facebooklite.Controllers;
 
+import com.sun.xml.internal.ws.api.FeatureConstructor;
 import facebooklite.FriendsDao;
 import facebooklite.PostsDao;
 import facebooklite.User;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
+import facebooklite.UserDao;
 
 public class DashBoardController {
     private User user;
@@ -34,6 +36,7 @@ public class DashBoardController {
     TextArea newPost;
     @FXML
     TableView userFeed;
+
 
     public DashBoardController(User user){
         this.user = user;
@@ -116,12 +119,13 @@ public class DashBoardController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize()  {
         fullname.setText(user.getFirstName() + " " + user.getLastName());
         age.setText(String.valueOf(user.getAge()) + " Years old");
         updateStatus();
         initializeFriends();
         initializeFeed();
+
     }
 
     private void initializeFeed() {
@@ -148,6 +152,12 @@ public class DashBoardController {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private void changeUserAge() throws SQLException {
+        UserDao.changeUserAge( user.getUserName(), 60);
+        System.out.println("Age is now: "+ UserDao.getUser(user.getUserName()).getAge());
     }
 
     private void updateStatus() {

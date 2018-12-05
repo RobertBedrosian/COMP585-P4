@@ -59,7 +59,7 @@ public class MainController {
                     System.out.println("Successfully logged in");
 
                     /**Switch scenes--to the dashboard-- if correct credentials*/
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/dashboard.fxml"));
                     loader.setController(new DashBoardController(user));
                     Parent regFXMLParent = loader.load();
                     Scene regFXMLScene = new Scene(regFXMLParent);

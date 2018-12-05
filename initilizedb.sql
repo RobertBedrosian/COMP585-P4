@@ -51,8 +51,8 @@ INSERT INTO friends (user_id1, user_id2) VALUES (4, 3);
 INSERT INTO friends (user_id1, user_id2) VALUES (3, 5);
 INSERT INTO friends (user_id1, user_id2) VALUES (5, 3);
 
-INSERT INTO posts (user_id, content) VALUES (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
-INSERT INTO posts (user_id, content) VALUES (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
-INSERT INTO posts (user_id, content) VALUES (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
-INSERT INTO posts (user_id, content) VALUES (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
-INSERT INTO posts (user_id, content) VALUES (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
+INSERT INTO posts (user_id, content) VALUES (5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
+INSERT INTO posts (user_id, content) VALUES (5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
+INSERT INTO posts (user_id, content) VALUES (5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
+INSERT INTO posts (user_id, content) VALUES (5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');
+INSERT INTO posts (user_id, content) VALUES (5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices lorem quis ornare ornare. Phasellus iaculis turpis nec enim finibus, ac cursus purus tristique. Nunc ut rhoncus ipsum. Cras non.');

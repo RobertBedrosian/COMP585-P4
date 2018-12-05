@@ -76,4 +76,8 @@ public class UserDao  {
     public static void deleteUser(String userName) {
 
     }
+
+    public static void changeUserAge(String username, int age) throws SQLException {
+        DBUtil.dbExecuteUpdate("UPDATE users SET age = '"+age+"' WHERE username = '"+username+"' ");
+    }
 }

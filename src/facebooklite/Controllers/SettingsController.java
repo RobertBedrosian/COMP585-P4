@@ -38,6 +38,8 @@ public class SettingsController {
         }
     }
 
+
+
     @FXML
     public void close() {
         Stage stage = (Stage) hideAge.getScene().getWindow();
