@@ -18,4 +18,9 @@ public class FriendController {
     public void initialize() {
         userName.setText(user.getUserName());
     }
+
+    @FXML
+    public void delete() {
+
+    }
 }

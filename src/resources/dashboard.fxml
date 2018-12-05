@@ -29,7 +29,7 @@
                   <Font name="Roboto Regular" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="fullname" layoutX="123.0" layoutY="14.0" text="{Firstname} + {Lastname}" textFill="WHITE">
+            <Label fx:id="fullName" layoutX="123.0" layoutY="14.0" text="{Firstname} + {Lastname}" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="18.0" />
                </font>

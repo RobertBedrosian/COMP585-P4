@@ -1,10 +1,8 @@
 package facebooklite.Controllers;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import facebooklite.FriendsDao;
 import facebooklite.PostsDao;
 import facebooklite.User;
-import facebooklite.UserDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,7 +23,7 @@ public class DashBoardController {
     private User user;
 
     @FXML
-    Label fullname;
+    Label fullName;
     @FXML
     Label age;
     @FXML
@@ -121,7 +117,7 @@ public class DashBoardController {
 
     @FXML
     public void initialize() {
-        fullname.setText(user.getFirstName() + " " + user.getLastName());
+        fullName.setText(user.getFirstName() + " " + user.getLastName());
         age.setText(String.valueOf(user.getAge()) + " Years old");
         updateStatus();
         initializeFriends();
@@ -155,17 +151,17 @@ public class DashBoardController {
 
     private void initializeFriends() {
         try {
-            ArrayList friendList = FriendsDao.getFriends(user);
-            friendList.forEach((friend) -> System.out.println(friend));
+            ArrayList<User> friendList = FriendsDao.getFriends(user);
+            friendList.forEach((friend) -> System.out.println(friend.getId()));
             if(friendList.size() > 0) {
                 ArrayList<Pane> friends = new ArrayList();
-                friendList.forEach((User) -> {
+                friendList.forEach((friend) -> {
                     try {
                         FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friend.fxml"));
-                        FriendController friendController = new FriendController(user);
+                        FriendController friendController = new FriendController(friend);
                         friendLoader.setController(friendController);
-                        Pane friend = friendLoader.load();
-                        friends.add(friend);
+                        Pane friendPane = friendLoader.load();
+                        friends.add(friendPane);
                     }
                     catch (IOException e) {
                         e.printStackTrace();
