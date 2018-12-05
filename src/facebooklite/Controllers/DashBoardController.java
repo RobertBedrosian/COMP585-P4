@@ -88,7 +88,7 @@ public class DashBoardController {
     }
 
     @FXML
-    public void removeFriend() {
+    public void removeFriends() {
 
     }
 
@@ -113,10 +113,10 @@ public class DashBoardController {
 
     private void initializeFeed() {
         try {
-            ArrayList<User> friendList = PostsDao.getPosts(user);
-            if(friendList.size() > 0) {
-                for(User u : friendList) {
-                    System.out.println(u.getFirstName());
+            ArrayList<String> postList = PostsDao.getPosts(user);
+            if(postList.size() > 0) {
+                for(String s : postList) {
+                    System.out.println(s);
                 }
             }
         }

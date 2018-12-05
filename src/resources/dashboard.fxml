@@ -89,7 +89,7 @@
             <ButtonBar layoutX="708.0" layoutY="527.0" prefHeight="40.0" prefWidth="274.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
-                  <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriend" text="Remove Friend" />
+                  <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriends" text="Remove Friend" />
                </buttons>
             </ButtonBar>
             <Label layoutX="781.0" layoutY="46.0" text="Friends List">
