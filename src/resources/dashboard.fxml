@@ -84,7 +84,7 @@
          <children>
             <Line endX="81.0" endY="341.0" layoutX="599.0" layoutY="266.0" startX="81.0" startY="-266.0" stroke="#8a8a8a" />
             <Button fx:id="addPost" layoutX="597.0" layoutY="125.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
-            <ButtonBar buttonOrder="%key.unspecified" layoutX="725.0" layoutY="534.0">
+            <ButtonBar buttonOrder="" layoutX="725.0" layoutY="534.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
                   <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriends" prefHeight="26.0" prefWidth="149.0" text="Remove Friend" />

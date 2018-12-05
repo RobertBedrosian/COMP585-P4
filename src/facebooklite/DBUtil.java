@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class DBUtil {
     private static Connection conn;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost/facebook_lite";
-    private static final String user = "db_user";
-    private static final String password = "password";
+    private static final String url = "jdbc:mysql://localhost:3306/facebook_lite";
+    private static final String user = "root";
+    private static final String password = "";
 
 
     public DBUtil(){ }

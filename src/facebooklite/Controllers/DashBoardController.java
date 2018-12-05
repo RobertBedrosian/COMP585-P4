@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -129,6 +130,9 @@ public class DashBoardController {
             Map<Integer, String> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
                 postList.forEach((Integer id, String content) -> System.out.println(content));
+                postList.forEach((Integer id, String content) -> {
+                    userFeed.getItems().add(content);
+                });
             }
         }
         catch (SQLException e) {
