@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,11 +31,11 @@ public class DashBoardController {
     @FXML
     Label status;
     @FXML
-    TableView friendTable;
+    Pane friendTable;
     @FXML
     TextArea newPost;
     @FXML
-    TableView userFeed;
+    Pane userFeed;
 
     public DashBoardController(User user){
         this.user = user;
@@ -131,7 +132,7 @@ public class DashBoardController {
             if(postList.size() > 0) {
                 postList.forEach((Integer id, String content) -> System.out.println(content));
                 postList.forEach((Integer id, String content) -> {
-                    userFeed.getItems().add(content);
+//                    userFeed.getItems().add(content);
                 });
             }
         }

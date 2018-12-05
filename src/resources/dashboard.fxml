@@ -3,9 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
@@ -84,7 +81,7 @@
          <children>
             <Line endX="81.0" endY="341.0" layoutX="599.0" layoutY="266.0" startX="81.0" startY="-266.0" stroke="#8a8a8a" />
             <Button fx:id="addPost" layoutX="597.0" layoutY="125.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
-            <ButtonBar buttonOrder="" layoutX="725.0" layoutY="534.0">
+            <ButtonBar buttonOrder="" layoutX="719.0" layoutY="55.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
                   <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriends" prefHeight="26.0" prefWidth="149.0" text="Remove Friend" />
@@ -105,29 +102,9 @@
                   <Font name="Roboto Regular" size="27.0" />
                </font>
             </Label>
-            <ScrollPane hbarPolicy="NEVER" layoutX="686.0" layoutY="51.0" prefHeight="471.0" prefWidth="325.0">
-               <content>
-                  <TableView fx:id="friendTable" prefHeight="469.0" prefWidth="325.0">
-                    <columns>
-                      <TableColumn prefWidth="145.0" text="Friends" />
-                      <TableColumn text="Profiles" />
-                        <TableColumn text="Remove" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="204.0" prefHeight="308.0" prefWidth="659.0">
-               <content>
-                  <TableView fx:id="userFeed" prefHeight="306.0" prefWidth="659.0">
-                    <columns>
-                      <TableColumn fx:id="postView" prefWidth="560.0" text="Posts" />
-                      <TableColumn fx:id="removeCheck" text="Remove" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <Button fx:id="removePost" layoutX="491.0" layoutY="534.0" mnemonicParsing="false" onAction="#removePosts" prefHeight="26.0" prefWidth="181.0" text="Remove Selected Posts" />
             <TextArea fx:id="newPost" layoutX="14.0" layoutY="56.0" prefHeight="95.0" prefWidth="569.0" />
+            <Pane fx:id="postArea" layoutX="14.0" layoutY="204.0" prefHeight="378.0" prefWidth="656.0" />
+            <Pane fx:id="friendArea" layoutX="689.0" layoutY="85.0" prefHeight="498.0" prefWidth="328.0" />
          </children>
       </Pane>
    </center>
