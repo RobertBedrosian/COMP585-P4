@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -76,6 +76,7 @@
               </buttons>
             </ButtonBar>
             <Button fx:id="logout" layoutX="935.0" layoutY="153.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+            <Button fx:id="editAge" layoutX="225.0" layoutY="153.0" mnemonicParsing="false" text="Update Age" />
          </children>
       </AnchorPane>
    </top>
@@ -84,7 +85,7 @@
          <children>
             <Line endX="81.0" endY="341.0" layoutX="599.0" layoutY="266.0" startX="81.0" startY="-266.0" stroke="#8a8a8a" />
             <Button fx:id="addPost" layoutX="597.0" layoutY="125.0" mnemonicParsing="false" onAction="#submitPost" text="Add Post" />
-            <ButtonBar buttonOrder="" layoutX="725.0" layoutY="534.0">
+            <ButtonBar buttonOrder="" layoutX="690.0" layoutY="534.0">
                <buttons>
                   <Button fx:id="addFriend" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
                   <Button fx:id="removeFriend" mnemonicParsing="false" onAction="#removeFriends" prefHeight="26.0" prefWidth="149.0" text="Remove Friend" />
