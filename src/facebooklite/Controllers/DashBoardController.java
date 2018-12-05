@@ -1,5 +1,6 @@
 package facebooklite.Controllers;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import facebooklite.FriendsDao;
 import facebooklite.PostsDao;
 import facebooklite.User;
@@ -14,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,11 +33,11 @@ public class DashBoardController {
     @FXML
     Label status;
     @FXML
-    Pane friendTable;
+    VBox friendArea;
     @FXML
     TextArea newPost;
     @FXML
-    Pane userFeed;
+    VBox postArea;
 
     public DashBoardController(User user){
         this.user = user;
@@ -126,14 +128,24 @@ public class DashBoardController {
         initializeFeed();
     }
 
-    private void initializeFeed() {
+    private void initializeFeed(){
         try {
             Map<Integer, String> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
-                postList.forEach((Integer id, String content) -> System.out.println(content));
+                ArrayList<Pane> posts = new ArrayList();
                 postList.forEach((Integer id, String content) -> {
-//                    userFeed.getItems().add(content);
+                    try {
+                        FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+                        PostController postController = new PostController(id, content);
+                        postLoader.setController(postController);
+                        Pane post = postLoader.load();
+                        posts.add(post);
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
+                postArea.getChildren().addAll(posts);
             }
         }
         catch (SQLException e) {
@@ -143,11 +155,23 @@ public class DashBoardController {
 
     private void initializeFriends() {
         try {
-            ArrayList<User> friendList = FriendsDao.getFriends(user);
+            ArrayList friendList = FriendsDao.getFriends(user);
+            friendList.forEach((friend) -> System.out.println(friend));
             if(friendList.size() > 0) {
-                for(User u : friendList) {
-                    System.out.println(u.getFirstName());
-                }
+                ArrayList<Pane> friends = new ArrayList();
+                friendList.forEach((User) -> {
+                    try {
+                        FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friend.fxml"));
+                        FriendController friendController = new FriendController(user);
+                        friendLoader.setController(friendController);
+                        Pane friend = friendLoader.load();
+                        friends.add(friend);
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                friendArea.getChildren().addAll(friends);
             }
         }
         catch (SQLException e) {
