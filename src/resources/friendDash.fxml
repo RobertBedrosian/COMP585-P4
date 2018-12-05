@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,12 +25,12 @@
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
-            <Label fx:id="age" layoutX="600.0" layoutY="20.0" text="{AGE}" textFill="WHITE">
+            <Label fx:id="age" layoutX="560.0" layoutY="20.0" text="{AGE}" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="673.0" layoutY="20.0" text="years old" textFill="WHITE">
+            <Label layoutX="658.0" layoutY="20.0" text="years old" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>
@@ -40,14 +40,14 @@
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
-            <Label fx:id="status" layoutX="145.0" layoutY="97.0" text="{status}">
+            <Label fx:id="status" layoutX="156.0" layoutY="97.0" text="{status}">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
             <ScrollPane hbarPolicy="NEVER" layoutX="573.0" layoutY="230.0" prefHeight="279.0" prefWidth="200.0">
                <content>
-                  <TableView fx:id="friendsTable" prefHeight="279.0" prefWidth="200.0">
+                  <TableView fx:id="friendsTable" prefHeight="279.0" prefWidth="184.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Friends" />
                     </columns>
@@ -57,9 +57,9 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="231.0" prefHeight="281.0" prefWidth="283.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="231.0" prefHeight="281.0" prefWidth="491.0">
                <content>
-                  <TableView fx:id="postTable" prefHeight="281.0" prefWidth="283.0">
+                  <TableView fx:id="postTable" prefHeight="281.0" prefWidth="473.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Posts" />
                     </columns>
@@ -69,7 +69,7 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <Label layoutX="122.0" layoutY="174.0" text="Feed" underline="true">
+            <Label layoutX="222.0" layoutY="174.0" text="Feed" underline="true">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>

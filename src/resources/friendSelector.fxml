@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,22 +22,22 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label layoutX="14.0" layoutY="20.0" text="Find a friend!" textFill="WHITE">
+            <Label layoutX="319.0" layoutY="23.0" text="Find a friend!" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
             <Line endX="700.0" layoutX="100.0" layoutY="149.0" startX="-100.0" stroke="#bfbfbf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" />
-            <TextField fx:id="search" layoutX="168.0" layoutY="106.0" prefHeight="26.0" prefWidth="465.0" />
+            <TextField fx:id="search" layoutX="193.0" layoutY="106.0" prefHeight="26.0" prefWidth="440.0" />
             <Label layoutX="26.0" layoutY="107.0" text="Search Username:">
                <font>
                   <Font name="Roboto Regular" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="searchButton" layoutX="669.0" layoutY="106.0" mnemonicParsing="false" text="Search" />
+            <Button fx:id="searchButton" layoutX="648.0" layoutY="106.0" mnemonicParsing="false" text="Search" />
             <Button fx:id="addFriendButton" layoutX="633.0" layoutY="560.0" mnemonicParsing="false" text="Add Selected Friends" />
-            <Button fx:id="cancelButton" layoutX="541.0" layoutY="560.0" mnemonicParsing="false" text="Cancel" />
-            <ScrollPane hbarPolicy="NEVER" layoutY="209.0" prefHeight="252.0" prefWidth="800.0">
+            <Button fx:id="cancelButton" layoutX="554.0" layoutY="560.0" mnemonicParsing="false" text="Cancel" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="209.0" prefHeight="252.0" prefWidth="779.0">
                <content>
                   <TableView fx:id="friendSelectorTable" prefHeight="252.0" prefWidth="800.0">
                     <columns>
