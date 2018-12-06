@@ -69,7 +69,7 @@ public class UserDao  {
     }
 
     public static void updateSettings(User user, boolean age, boolean posts, boolean status, boolean friends) throws SQLException {
-        DBUtil.dbExecuteUpdate("UPDATE users SET age_visibility=?, status_visibility=?, WHERE id=?, friends_visibility=?, post_visibility=?",
+        DBUtil.dbExecuteUpdate("UPDATE users SET age_visibility=?, status_visibility=?, friends_visibility=?, post_visibility=? WHERE id=?",
                                 age, posts, status, friends, user.getId());
     }
 
