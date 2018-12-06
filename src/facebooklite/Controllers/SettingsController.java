@@ -12,13 +12,13 @@ public class SettingsController {
     private User user;
 
     @FXML
-    CheckBox hideAge;
+    CheckBox ageToggle;
     @FXML
-    CheckBox hidePosts;
+    CheckBox postsToggle;
     @FXML
-    CheckBox hideStatus;
+    CheckBox statusToggle;
     @FXML
-    CheckBox hideFriends;
+    CheckBox friendsToggle;
 
     public SettingsController(User user) {
         this.user = user;
@@ -27,10 +27,9 @@ public class SettingsController {
     @FXML
     public void save() {
         try {
-            UserDao.updateSettings(user, hideAge.isSelected(), hidePosts.isSelected(), hideStatus.isSelected(), hideFriends.isSelected());
+            UserDao.updateSettings(user, ageToggle.isSelected(), postsToggle.isSelected(), statusToggle.isSelected(), friendsToggle.isSelected());
         }
         catch (SQLException e) {
-            System.out.println("Error updating settings.");
             e.printStackTrace();
         }
         finally {
@@ -40,7 +39,7 @@ public class SettingsController {
 
     @FXML
     public void close() {
-        Stage stage = (Stage) hideAge.getScene().getWindow();
+        Stage stage = (Stage) ageToggle.getScene().getWindow();
         stage.close();
     }
 }
