@@ -27,7 +27,7 @@ public class SettingsController {
     @FXML
     public void save() {
         try {
-            UserDao.updateSettings(user, ageToggle.isSelected(), postsToggle.isSelected(), statusToggle.isSelected(), friendsToggle.isSelected());
+            UserDao.updateSettings(user, !ageToggle.isSelected(), !postsToggle.isSelected(), !statusToggle.isSelected(), !friendsToggle.isSelected());
         }
         catch (SQLException e) {
             e.printStackTrace();

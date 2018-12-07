@@ -1,9 +1,12 @@
 package facebooklite.Controllers;
 
 import facebooklite.User;
+import facebooklite.UserDao;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.VBox;
 
 public class FriendDashController {
     private User user;
@@ -14,10 +17,10 @@ public class FriendDashController {
     Label age;
     @FXML
     Label status;
-//    @FXML
-    //TableView friendsTable;
-//    @FXML
-    //TableView postTable;
+    @FXML
+    VBox postArea;
+    @FXML
+    VBox friendArea;
 
 
     public FriendDashController(User user) {
@@ -31,10 +34,12 @@ public class FriendDashController {
         status.setText(user.getStatus());
         // add friends
         // add posts
-        applyVisibleSettings();
-    }
 
-    private void applyVisibleSettings() {
-
+        try {
+            User temp = UserDao.getUser(user.getUserName());
+            System.out.println(user.getAgeVisibility());
+        } catch(SQLException e){
+            System.out.println(e);
+        }
     }
 }

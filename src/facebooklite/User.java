@@ -10,6 +10,10 @@ public class User {
     private byte[] hashedPassword;
     private String email;
     private String status;
+    private boolean age_visibility;
+    private boolean status_visibility;
+    private boolean friends_visibility;
+    private boolean post_visibility;
 
     public User (){
 
@@ -63,6 +67,14 @@ public class User {
     public String getStatus() {
         return status;
     }
+
+    public boolean getAgeVisibility() { return age_visibility; }
+
+    public boolean getStatusVisibility() { return status_visibility; }
+
+    public boolean getFriendsVisibility() { return friends_visibility; }
+
+    public boolean getPostVisibility() { return post_visibility; }
 
     public void setId(int id) { this.id = id; }
 
