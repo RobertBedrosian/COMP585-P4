@@ -78,6 +78,9 @@ public class DashBoardController {
         System.out.println(newPost.getText());
         try {
             PostsDao.addPost(user, newPost.getText());
+            postArea.getChildren().clear();
+            initializeFeed();
+            newPost.clear();
         } catch(SQLException e) {
             System.out.println("Unable to create post");
         }

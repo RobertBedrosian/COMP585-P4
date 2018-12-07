@@ -20,7 +20,7 @@ public class PostsDao {
     public static Map getPosts(User user) throws SQLException {
         Map postList = new HashMap();
         if(UserDao.userExists(user.getUserName())) {
-            ResultSet rs = DBUtil.dbExecuteQuery("SELECT id,content FROM posts WHERE user_id=?;", user.getId());
+            ResultSet rs = DBUtil.dbExecuteQuery("SELECT id,content FROM posts WHERE user_id=? ORDER BY id DESC;", user.getId());
             while(rs.next()) {
                 postList.put(rs.getInt("id"), rs.getString("content"));
             }
