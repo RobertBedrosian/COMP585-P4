@@ -23,5 +23,6 @@ public class PostController {
     @FXML
     public void delete() {
 //        PostsDao.deletePost(user, id);
+        System.out.println(id + ": " + text);
     }
 }

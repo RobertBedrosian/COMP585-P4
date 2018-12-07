@@ -75,7 +75,12 @@ public class DashBoardController {
 
     @FXML
     public void submitPost() {
-
+        System.out.println(newPost.getText());
+        try {
+            PostsDao.addPost(user, newPost.getText());
+        } catch(SQLException e) {
+            System.out.println("Unable to create post");
+        }
     }
 
     @FXML
