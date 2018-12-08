@@ -50,10 +50,12 @@ public class FriendDashController {
     }
 
     private void setPosts() {
+        System.out.println(user.getId());
         try {
             Map<Integer, String> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
                 ArrayList<Pane> posts = new ArrayList();
+                System.out.println(postList.size());
                 postList.forEach((Integer id, String content) -> {
                     try {
                         FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
