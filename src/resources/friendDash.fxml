@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -46,12 +46,12 @@
             </Label>
             <ScrollPane hbarPolicy="NEVER" layoutX="573.0" layoutY="230.0" prefHeight="279.0" prefWidth="200.0">
                <content>
-                  <VBox fx:id="friends" prefHeight="279.0" prefWidth="200.0" />
+                  <VBox fx:id="friendArea" prefHeight="279.0" prefWidth="200.0" />
                </content>
             </ScrollPane>
             <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="231.0" prefHeight="281.0" prefWidth="491.0">
                <content>
-                  <VBox fx:id="feed" prefHeight="281.0" prefWidth="491.0" />
+                  <VBox fx:id="postArea" prefHeight="281.0" prefWidth="491.0" />
                </content>
             </ScrollPane>
             <Label layoutX="222.0" layoutY="174.0" text="Feed" underline="true">

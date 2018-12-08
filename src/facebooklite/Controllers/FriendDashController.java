@@ -1,15 +1,26 @@
 package facebooklite.Controllers;
 
+import facebooklite.PostsDao;
 import facebooklite.User;
 import facebooklite.UserDao;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class FriendDashController {
     private User user;
+    private boolean age_visibility;
+    private boolean statuse_visibility;
+    private boolean friends_visibility;
+    private boolean post_visibility;
 
     @FXML
     Label fullName;
@@ -34,12 +45,35 @@ public class FriendDashController {
         status.setText(user.getStatus());
         // add friends
         // add posts
+        postArea = new VBox();
+        setPosts();
+    }
 
+    private void setPosts() {
         try {
-            User temp = UserDao.getUser(user.getUserName());
-            System.out.println(user.getAgeVisibility());
-        } catch(SQLException e){
+            Map<Integer, String> postList = PostsDao.getPosts(user);
+            if(postList.size() > 0) {
+                ArrayList<Pane> posts = new ArrayList();
+                postList.forEach((Integer id, String content) -> {
+                    try {
+                        FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+                        PostController postController = new PostController(id, content);
+                        postLoader.setController(postController);
+                        Pane post = postLoader.load();
+                        posts.add(post);
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postArea.getChildren().addAll(posts);
+            }
+        } catch(SQLException e) {
             System.out.println(e);
         }
     }
+
+//    private void setFriends() {
+//        ;
+//    }
 }
