@@ -1,5 +1,6 @@
 package facebooklite.Controllers;
 
+import facebooklite.FriendsDao;
 import facebooklite.PostsDao;
 import facebooklite.User;
 import facebooklite.UserDao;
@@ -44,17 +45,16 @@ public class FriendDashController {
         age.setText(String.valueOf(user.getAge()));
         status.setText(user.getStatus());
         // add friends
+        setFriends();
         // add posts
         setPosts();
     }
 
     private void setPosts() {
-        System.out.println(user.getId());
         try {
             Map<Integer, String> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
                 ArrayList<Pane> posts = new ArrayList();
-                System.out.println(postList.size());
                 postList.forEach((Integer id, String content) -> {
                     try {
                         FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
@@ -74,7 +74,30 @@ public class FriendDashController {
         }
     }
 
-//    private void setFriends() {
-//        ;
-//    }
+    private void setFriends() {
+        try {
+            ArrayList<User> friendList = FriendsDao.getFriends(user);
+            System.out.println(friendList.size());
+            friendList.forEach((friend) -> System.out.println(friend.getId()));
+            if(friendList.size() > 0) {
+                ArrayList<Pane> friends = new ArrayList();
+                friendList.forEach((friend) -> {
+                    try {
+                        FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friend.fxml"));
+                        FriendController friendController = new FriendController(friend);
+                        friendLoader.setController(friendController);
+                        Pane friendPane = friendLoader.load();
+                        friends.add(friendPane);
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                friendArea.getChildren().addAll(friends);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
