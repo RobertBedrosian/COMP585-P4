@@ -109,4 +109,12 @@ public class User {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public void setAgeVisibility(boolean age_visibility) { this.age_visibility = age_visibility; }
+
+    public void setStatusVisibility(boolean status_visibility) { this.status_visibility = status_visibility; }
+
+    public void setFriendsVisibility(boolean friends_visibility) { this.friends_visibility = friends_visibility; }
+
+    public void setPostVisibility(boolean post_visibility) { this.post_visibility = post_visibility; }
 }

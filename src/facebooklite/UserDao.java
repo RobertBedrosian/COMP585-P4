@@ -46,6 +46,10 @@ public class UserDao  {
             user.setSalt(rs.getBytes("salt"));
             user.setHashedPassword(rs.getBytes("password"));
             user.setStatus(rs.getString("status"));
+            user.setAgeVisibility(rs.getBoolean("age_visibility"));
+            user.setStatusVisibility(rs.getBoolean("status_visibility"));
+            user.setFriendsVisibility(rs.getBoolean("friends_visibility"));
+            user.setPostVisibility(rs.getBoolean("post_visibility"));
         }
         return user;
     }

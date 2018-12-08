@@ -18,10 +18,6 @@ import javafx.scene.layout.VBox;
 
 public class FriendDashController {
     private User user;
-    private boolean age_visibility;
-    private boolean statuse_visibility;
-    private boolean friends_visibility;
-    private boolean post_visibility;
 
     @FXML
     Label fullName;
@@ -45,9 +41,15 @@ public class FriendDashController {
         age.setText(String.valueOf(user.getAge()));
         status.setText(user.getStatus());
         // add friends
-        setFriends();
+        System.out.println(user.getFriendsVisibility());
+        if(user.getFriendsVisibility()) {
+            setFriends();
+        }
+        System.out.println(user.getPostVisibility());
         // add posts
-        setPosts();
+        if(user.getPostVisibility()) {
+            setPosts();
+        }
     }
 
     private void setPosts() {
