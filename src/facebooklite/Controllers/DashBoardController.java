@@ -3,6 +3,7 @@ package facebooklite.Controllers;
 import facebooklite.FriendsDao;
 import facebooklite.PostsDao;
 import facebooklite.User;
+import facebooklite.UserDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,13 @@ public class DashBoardController {
     TextArea newPost;
     @FXML
     VBox postArea;
+    @FXML
+    TextField ageTextField;
+    @FXML
+    Button ageSettings;
+    boolean  ageIsBeingChanged = false;
+    @FXML
+    Label ageMessage;
 
     public DashBoardController(User user){
         this.user = user;
@@ -125,6 +133,7 @@ public class DashBoardController {
         updateStatus();
         initializeFriends();
         initializeFeed();
+
     }
 
     private void initializeFeed(){
@@ -177,6 +186,48 @@ public class DashBoardController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void changeAge(ActionEvent e){
+            ageTextField.setText(Integer.toString(user.getAge()));
+            ageTextField.setVisible(true);
+            ageMessage.setVisible(true);
+    }
+
+    @FXML
+    private void onEnter(ActionEvent e) throws SQLException {
+        int ageTemp = user.getAge();
+
+        if (ageTextField.getText().length() == 0){
+            //do nothing. keep age the same
+        }
+        else{
+
+            try{
+                ageTemp = Integer.parseInt(ageTextField.getText());
+            }
+            catch (NumberFormatException err){
+                createAlertBox("Enter numbers only.");
+            }
+
+            if (ageTemp >= 13 && ageTemp <= 120 ){
+                UserDao.changeUserAge(user.getUserName(), ageTemp);
+                age.setText(Integer.toString(ageTemp));
+                user.setAge(ageTemp);
+            }
+            else{
+                createAlertBox("Enter an age between 13 and 120.");
+            }
+        }
+        ageTextField.setVisible(false);
+        ageMessage.setVisible(false);
+    }
+
+    private void createAlertBox(String message){
+        Alert alertBox = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
+        alertBox.showAndWait();
+    }
+
 
     private void updateStatus() {
         status.setText(user.getStatus());
