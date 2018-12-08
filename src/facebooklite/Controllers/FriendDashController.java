@@ -37,15 +37,20 @@ public class FriendDashController {
 
     @FXML
     public void initialize() {
+        // full name
         fullName.setText(user.getFirstName() + " " + user.getLastName());
-        age.setText(String.valueOf(user.getAge()));
-        status.setText(user.getStatus());
+        // age
+        if(user.getAgeVisibility()) {
+            age.setText(String.valueOf(user.getAge()) + " years old");
+        }
+        // status
+        if(user.getStatusVisibility()) {
+            status.setText(user.getStatus());
+        }
         // add friends
-        System.out.println(user.getFriendsVisibility());
         if(user.getFriendsVisibility()) {
             setFriends();
         }
-        System.out.println(user.getPostVisibility());
         // add posts
         if(user.getPostVisibility()) {
             setPosts();

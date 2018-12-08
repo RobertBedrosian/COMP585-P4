@@ -24,21 +24,21 @@
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
-            <Label fx:id="age" layoutX="560.0" layoutY="20.0" text="{AGE}" textFill="WHITE">
+            <Label fx:id="age" layoutX="560.0" layoutY="20.0" text="" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="658.0" layoutY="20.0" text="years old" textFill="WHITE">
-               <font>
-                  <Font name="Roboto Regular" size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="97.0" text="Currently, ">
-               <font>
-                  <Font name="Roboto Regular" size="28.0" />
-               </font>
-            </Label>
+            <!--<Label layoutX="658.0" layoutY="20.0" text="" textFill="WHITE">-->
+               <!--<font>-->
+                  <!--<Font name="Roboto Regular" size="28.0" />-->
+               <!--</font>-->
+            <!--</Label>-->
+            <!--<Label layoutX="14.0" layoutY="97.0" text="Currently, ">-->
+               <!--<font>-->
+                  <!--<Font name="Roboto Regular" size="28.0" />-->
+               <!--</font>-->
+            <!--</Label>-->
             <Label fx:id="status" layoutX="156.0" layoutY="97.0" text="{status}">
                <font>
                   <Font name="Roboto Regular" size="28.0" />
