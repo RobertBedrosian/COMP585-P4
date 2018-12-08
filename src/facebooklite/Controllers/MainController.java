@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,6 +24,9 @@ public class MainController {
 
     @FXML
     private TextField password;
+
+    @FXML
+    private Label invalidCredentials;
 
     @FXML
     private void openRegFXML(ActionEvent event) throws IOException {
@@ -70,6 +74,8 @@ public class MainController {
                 }else{
                     System.out.println("Incorrect username and/or Password");
                     // Show text for user to know they entered wrong credentials
+                    invalidCredentials.setVisible(true);
+
                 }
             }
             else{
