@@ -45,7 +45,6 @@ public class FriendDashController {
         status.setText(user.getStatus());
         // add friends
         // add posts
-        postArea = new VBox();
         setPosts();
     }
 
