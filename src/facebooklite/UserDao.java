@@ -3,7 +3,6 @@ package facebooklite;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class UserDao  {
 
     public static void createUser(User user) {
@@ -29,6 +28,15 @@ public class UserDao  {
             return getUserFromResultSet(rs);
         }
         else{
+            return null;
+        }
+    }
+
+    public static User getUserById(int id) throws SQLException {
+        ResultSet rs = DBUtil.dbExecuteQuery("SELECT * FROM users WHERE id = '" + id + "'");
+        if(rs.next()) {
+            return getUserFromResultSet(rs);
+        } else {
             return null;
         }
     }

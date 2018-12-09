@@ -27,4 +27,14 @@ public class PostsDao {
         }
         return postList;
     }
+
+    // Gets owner of the post's user id
+    public static int getUserOfPost(int id) throws SQLException {
+        ResultSet rs = DBUtil.dbExecuteQuery("SELECT * FROM posts WHERE id = '" + id + "'");
+        if( rs.next() ){
+            return rs.getInt("user_id");
+        } else {
+            return -1;
+        }
+    }
 }
