@@ -103,8 +103,9 @@ public class DashBoardController {
             Parent page = loader.load();
             stage.setTitle("Add Friend");
             stage.setScene(new Scene(page));
-            stage.show();
-            updateStatus();
+            stage.showAndWait();
+            friendArea.getChildren().clear();
+            initializeFriends();
         }
         catch (IOException e) {
             e.printStackTrace();
