@@ -114,7 +114,7 @@ public class DashBoardController {
 
     @FXML
     public void removeFriends() {
-
+        ;
     }
 
     @FXML
@@ -171,7 +171,7 @@ public class DashBoardController {
                 friendList.forEach((friend) -> {
                     try {
                         FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friend.fxml"));
-                        FriendController friendController = new FriendController(friend);
+                        FriendController friendController = new FriendController(user, friend);
                         friendLoader.setController(friendController);
                         Pane friendPane = friendLoader.load();
                         friends.add(friendPane);
