@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +34,7 @@
                </font>
             </Label>
             <Button fx:id="searchButton" layoutX="648.0" layoutY="106.0" mnemonicParsing="false" onAction="#searchFriends" text="Search" />
-            <Button fx:id="addFriendButton" layoutX="633.0" layoutY="560.0" mnemonicParsing="false" onAction="#done" text="Done" />
+            <Button fx:id="addFriendButton" layoutX="733.0" layoutY="560.0" mnemonicParsing="false" onAction="#done" text="Done" />
             <!--<Button fx:id="cancelButton" layoutX="554.0" layoutY="560.0" mnemonicParsing="false" onAction="#cancelSearch" text="Cancel" />-->
             <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="209.0" prefHeight="252.0" prefWidth="779.0">
                <content>
