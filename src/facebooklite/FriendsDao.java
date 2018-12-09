@@ -8,8 +8,8 @@ public class FriendsDao {
     // Sets user and friend as friends by adding the references in the Friends table
     public static void addFriend(User user, User friend) {
         try {
-            DBUtil.dbExecuteUpdate("INSERT INTO friends (user_id1, user_id2) VALUES (? ?)", user.getId(), friend.getId());
-            DBUtil.dbExecuteUpdate("INSERT INTO friends (user_id1, user_id2) VALUES (? ?)", friend.getId(), user.getId());
+            DBUtil.dbExecuteUpdate("INSERT INTO friends (user_id1, user_id2) VALUES (?, ?)", user.getId(), friend.getId());
+            DBUtil.dbExecuteUpdate("INSERT INTO friends (user_id1, user_id2) VALUES (?, ?)", friend.getId(), user.getId());
         }
         catch (SQLException e) {
             System.out.println("Error adding friend");

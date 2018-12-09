@@ -29,17 +29,6 @@ public class AddFriendController {
     }
 
     @FXML
-    public void done() {
-
-    }
-
-    @FXML
-    public void cancel() {
-        Stage stage = (Stage) search.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
     public void searchFriends() {
         search.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
         if(search.getText().length() > 0) {
@@ -52,7 +41,7 @@ public class AddFriendController {
                         if(!users.get(i).getUserName().equals(user.getUserName())) {
                             try {
                                 FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friendSelectorfriend.fxml"));
-                                FriendController friendController = new FriendController(users.get(i));
+                                FriendController friendController = new FriendController(user, users.get(i));
                                 friendLoader.setController(friendController);
                                 Pane friend = friendLoader.load();
                                 friendList.getChildren().add(friend);
@@ -86,7 +75,7 @@ public class AddFriendController {
     }
 
     @FXML
-    public void cancelSearch() {
+    public void done() {
         Stage stage = (Stage) search.getScene().getWindow();
         stage.close();
     }
