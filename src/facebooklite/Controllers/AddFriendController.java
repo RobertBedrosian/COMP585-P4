@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -40,6 +41,7 @@ public class AddFriendController {
 
     @FXML
     public void searchFriends() {
+        search.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
         if(search.getText().length() > 0) {
             try {
                 ArrayList<User> users = UserDao.getUsers(search.getText());
@@ -47,30 +49,39 @@ public class AddFriendController {
                     friendList.getChildren().clear();
                     for( int i = 0; i < users.size(); i++ ){
                         // check if user is logged in user or already a friend of the logged in user
-                        boolean friendship = FriendsDao.existsFriendship(user, users.get(i));
-                        System.out.println(friendship);
-                        if(!users.get(i).getUserName().equals(user.getUserName()) && !friendship) {
+                        if(!users.get(i).getUserName().equals(user.getUserName())) {
                             try {
                                 FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friendSelectorfriend.fxml"));
                                 FriendController friendController = new FriendController(users.get(i));
                                 friendLoader.setController(friendController);
                                 Pane friend = friendLoader.load();
                                 friendList.getChildren().add(friend);
+                                boolean friendship = FriendsDao.existsFriendship(user, users.get(i));
+                                if(friendship){
+                                    Scene s = friend.getScene();
+                                    Button b = (Button)(s.lookup("#userName").getParent().getChildrenUnmodifiable().get(1));
+                                    b.setDisable(true);
+                                    b.setText("Added");
+                                }
                             } catch (IOException e) {
                                 System.out.println(e);
                             }
                         }
                     }
+                    if( friendList.getChildren().size() == 0 ){
+                        friendList.getChildren().clear();
+                        friendList.getChildren().add(new Label("No results."));
+                    }
                 } else {
                     System.out.println("No friends");
                     friendList.getChildren().clear();
-                    friendList.getChildren().add(new Label("No friends."));
+                    friendList.getChildren().add(new Label("No results."));
                 }
             } catch (SQLException e) {
                 System.out.println(e);
             }
         } else {
-            // add red border to search text field
+            search.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
         }
     }
 
