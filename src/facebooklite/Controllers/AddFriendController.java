@@ -29,7 +29,7 @@ public class AddFriendController {
     }
 
     @FXML
-    public void accept() {
+    public void done() {
 
     }
 

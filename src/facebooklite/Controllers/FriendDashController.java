@@ -64,7 +64,7 @@ public class FriendDashController {
                 ArrayList<Pane> posts = new ArrayList();
                 postList.forEach((Integer id, String content) -> {
                     try {
-                        FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+                        FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/friendDashpost.fxml"));
                         PostController postController = new PostController(id, content);
                         postLoader.setController(postController);
                         Pane post = postLoader.load();
@@ -90,7 +90,7 @@ public class FriendDashController {
                 ArrayList<Pane> friends = new ArrayList();
                 friendList.forEach((friend) -> {
                     try {
-                        FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friend.fxml"));
+                        FXMLLoader friendLoader = new FXMLLoader(getClass().getResource("/friendDashfriend.fxml"));
                         FriendController friendController = new FriendController(friend);
                         friendLoader.setController(friendController);
                         Pane friendPane = friendLoader.load();
