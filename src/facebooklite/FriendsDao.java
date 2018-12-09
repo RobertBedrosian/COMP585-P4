@@ -40,4 +40,13 @@ public class FriendsDao {
         }
         return friends;
     }
+
+    public static boolean existsFriendship(User user, User friend) throws SQLException {
+        int total = DBUtil.dbExecuteQuery("SELECT COUNT(*) AS total FROM friends WHERE user_id1='" + user.getId() + "' and user_id2 ='" + friend.getId() + "';").getInt("total");
+        if(total > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

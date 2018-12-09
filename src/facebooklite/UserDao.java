@@ -2,6 +2,7 @@ package facebooklite;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDao  {
 
@@ -30,6 +31,15 @@ public class UserDao  {
         else{
             return null;
         }
+    }
+
+    public static ArrayList<User> getUsers(String userName) throws SQLException {
+        ResultSet rs = DBUtil.dbExecuteQuery("SELECT * FROM users WHERE username LIKE '"+userName+"%' ");
+        ArrayList<User> users = new ArrayList<>();
+        while(rs.next()) {
+            users.add(getUserFromResultSet(rs));
+        }
+        return users;
     }
 
     public static User getUserById(int id) throws SQLException {
