@@ -66,6 +66,12 @@ public class DashBoardController {
 
     @FXML
     public void showSettings() {
+        try {
+            user = UserDao.getUser(user.getUserName());
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/settings.fxml"));
         loader.setController(new SettingsController(user));
         Stage stage = new Stage();
@@ -73,6 +79,20 @@ public class DashBoardController {
             Parent page = loader.load();
             stage.setTitle("Add Friend");
             stage.setScene(new Scene(page));
+            Scene s = stage.getScene();
+            if(!user.getAgeVisibility()) {
+                ((CheckBox) (s.lookup("#ageToggle"))).setSelected(true);
+            }
+            if(!user.getPostVisibility()) {
+                ((CheckBox) (s.lookup("#postsToggle"))).setSelected(true);
+            }
+            if(!user.getStatusVisibility()) {
+                ((CheckBox) (s.lookup("#statusToggle"))).setSelected(true);
+            }
+            if(!user.getFriendsVisibility()) {
+                ((CheckBox) (s.lookup("#friendsToggle"))).setSelected(true);
+            }
+
             stage.show();
             updateStatus();
         }
