@@ -92,7 +92,7 @@ public class UserDao  {
 
     public static void updateSettings(User user, boolean age, boolean posts, boolean status, boolean friends) throws SQLException {
         DBUtil.dbExecuteUpdate("UPDATE users SET age_visibility=?, status_visibility=?, friends_visibility=?, post_visibility=? WHERE id=?",
-                                age, posts, status, friends, user.getId());
+                                age, status, friends, posts, user.getId());
     }
 
     public static void deleteUser(String userName) {
