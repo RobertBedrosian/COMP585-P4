@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,8 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TextField?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -60,9 +61,9 @@
                </font>
             </Label>
 
-            <TextField fx:id="ageTextField" layoutX="72.0" layoutY="75.0" prefHeight="26.0"  onAction="#onEnter" visible="false" />
+            <TextField fx:id="ageTextField" layoutX="72.0" layoutY="75.0" onAction="#onEnter" prefHeight="26.0" visible="false" />
 
-            <Label fx:id="ageMessage" layoutX="225.0" layoutY="75.0" text="Press enter to save age." visible="false" textFill="lightgreen">
+            <Label fx:id="ageMessage" layoutX="225.0" layoutY="75.0" text="Press enter to save age." textFill="lightgreen" visible="false">
                <font>
                   <Font name="Roboto Regular" size="18.0" />
                </font>
@@ -78,11 +79,11 @@
                   <Font name="Roboto Regular" size="18.0" />
                </font>
             </Label>
-            <ButtonBar layoutY="146.0" prefHeight="40.0" prefWidth="210.0">
+            <ButtonBar layoutY="146.0" prefHeight="40.0" prefWidth="310.0">
               <buttons>
-                  <Button fx:id="statusButton" mnemonicParsing="false" onAction="#changeStatus" text="Edit status" />
+                  <Button fx:id="statusButton" mnemonicParsing="false" onAction="#changeStatus" prefHeight="26.0" prefWidth="105.0" text="Edit status" />
                 <Button fx:id="settings" mnemonicParsing="false" onAction="#showSettings" text="Settings" />
-                  <Button fx:id="ageSettings" mnemonicParsing="false" text="Edit Age" onAction="#changeAge" />
+                  <Button fx:id="ageSettings" mnemonicParsing="false" onAction="#changeAge" text="Edit Age" />
               </buttons>
             </ButtonBar>
             <Button fx:id="logout" layoutX="935.0" layoutY="153.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
