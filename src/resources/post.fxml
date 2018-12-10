@@ -10,7 +10,7 @@
       <AnchorPane prefHeight="100.0" prefWidth="640.0">
          <children>
             <Button layoutX="566.0" layoutY="37.0" mnemonicParsing="false" onAction="#delete" text="X" />
-            <TextArea fx:id="content" disable="true" editable="false" layoutX="14.0" layoutY="5.0" prefHeight="90.0" prefWidth="490.0" wrapText="true" />
+            <TextArea fx:id="content" editable="false" layoutX="14.0" layoutY="5.0" prefHeight="90.0" prefWidth="490.0" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
