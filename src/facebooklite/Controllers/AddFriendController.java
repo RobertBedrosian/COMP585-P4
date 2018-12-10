@@ -30,8 +30,6 @@ public class AddFriendController {
 
     @FXML
     public void searchFriends() {
-        search.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
-        if(search.getText().length() > 0) {
             try {
                 ArrayList<User> users = UserDao.getUsers(search.getText());
                 if( users != null ){
@@ -69,9 +67,6 @@ public class AddFriendController {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-        } else {
-            search.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
-        }
     }
 
     @FXML

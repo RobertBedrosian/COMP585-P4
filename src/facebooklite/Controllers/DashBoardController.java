@@ -113,9 +113,8 @@ public class DashBoardController {
             } catch (SQLException e) {
                 System.out.println("Unable to create post");
             }
-            newPost.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
         } else {
-            newPost.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
+            createAlertBox("Please enter text you would like to post.");
         }
     }
 
