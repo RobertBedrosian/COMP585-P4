@@ -104,13 +104,18 @@ public class DashBoardController {
     @FXML
     public void submitPost() {
         System.out.println(newPost.getText());
-        try {
-            PostsDao.addPost(user, newPost.getText());
-            postArea.getChildren().clear();
-            initializeFeed();
-            newPost.clear();
-        } catch(SQLException e) {
-            System.out.println("Unable to create post");
+        if(newPost.getText().length() > 0) {
+            try {
+                PostsDao.addPost(user, newPost.getText());
+                postArea.getChildren().clear();
+                initializeFeed();
+                newPost.clear();
+            } catch (SQLException e) {
+                System.out.println("Unable to create post");
+            }
+            newPost.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+        } else {
+            newPost.setStyle("-fx-border-color: red; -fx-border-width: 1px;");
         }
     }
 
