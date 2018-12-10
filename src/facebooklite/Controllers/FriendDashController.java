@@ -37,6 +37,11 @@ public class FriendDashController {
 
     @FXML
     public void initialize() {
+        try {
+            user = UserDao.getUser(user.getUserName());
+        } catch(SQLException e) {
+            System.out.println(e);
+        }
         // full name
         fullName.setText(user.getFirstName() + " " + user.getLastName());
         // age
@@ -46,6 +51,8 @@ public class FriendDashController {
         // status
         if(user.getStatusVisibility()) {
             status.setText(user.getStatus());
+        } else {
+            status.setText("");
         }
         // add friends
         if(user.getFriendsVisibility()) {
