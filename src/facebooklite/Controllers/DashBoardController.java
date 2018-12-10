@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class DashBoardController {
@@ -178,6 +179,7 @@ public class DashBoardController {
                         e.printStackTrace();
                     }
                 });
+                Collections.reverse(posts);
                 postArea.getChildren().addAll(posts);
             }
         }
