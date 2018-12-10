@@ -63,7 +63,7 @@
 
             <TextField fx:id="ageTextField" layoutX="72.0" layoutY="75.0" onAction="#onEnter" prefHeight="26.0" visible="false" />
 
-            <Label fx:id="ageMessage" layoutX="225.0" layoutY="75.0" text="Press enter to save age." textFill="lightgreen" visible="false">
+            <Label fx:id="ageMessage" layoutX="274.0" layoutY="75.0" text="Press enter to save age." textFill="lightgreen" visible="false">
                <font>
                   <Font name="Roboto Regular" size="18.0" />
                </font>
