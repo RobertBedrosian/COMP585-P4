@@ -1,5 +1,6 @@
 package facebooklite.Controllers;
 
+import facebooklite.Post;
 import facebooklite.PostsDao;
 import facebooklite.User;
 import facebooklite.UserDao;
@@ -45,16 +46,16 @@ public class PostController {
                 VBox postArea = (VBox) (content.getParent().getParent().getParent());
                 postArea.getChildren().clear();
 
-            Map<Integer, String> postList = PostsDao.getPosts(u);
+            ArrayList<Post> postList = PostsDao.getPosts(u);
             if(postList.size() > 0) {
                 ArrayList<Pane> posts = new ArrayList();
-                postList.forEach((Integer id, String content) -> {
+                postList.forEach((Post post) -> {
                     try {
                         FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
-                        PostController postController = new PostController(id, content);
+                        PostController postController = new PostController(post.getId(), post.getContent());
                         postLoader.setController(postController);
-                        Pane post = postLoader.load();
-                        posts.add(post);
+                        Pane postPane = postLoader.load();
+                        posts.add(postPane);
                     }
                     catch (IOException e) {
                         e.printStackTrace();

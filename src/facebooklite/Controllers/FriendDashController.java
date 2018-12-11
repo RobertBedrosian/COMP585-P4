@@ -1,9 +1,7 @@
 package facebooklite.Controllers;
 
-import facebooklite.FriendsDao;
-import facebooklite.PostsDao;
-import facebooklite.User;
-import facebooklite.UserDao;
+import facebooklite.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -66,16 +64,16 @@ public class FriendDashController {
 
     private void setPosts() {
         try {
-            Map<Integer, String> postList = PostsDao.getPosts(user);
+            ArrayList<Post> postList = PostsDao.getPosts(user);
             if(postList.size() > 0) {
                 ArrayList<Pane> posts = new ArrayList();
-                postList.forEach((Integer id, String content) -> {
+                postList.forEach((Post post) -> {
                     try {
                         FXMLLoader postLoader = new FXMLLoader(getClass().getResource("/friendDashpost.fxml"));
-                        PostController postController = new PostController(id, content);
+                        PostController postController = new PostController(post.getId(), post.getContent());
                         postLoader.setController(postController);
-                        Pane post = postLoader.load();
-                        posts.add(post);
+                        Pane postPane = postLoader.load();
+                        posts.add(postPane);
                     }
                     catch (IOException e) {
                         e.printStackTrace();

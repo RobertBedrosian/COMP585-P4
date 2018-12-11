@@ -2,6 +2,7 @@ package facebooklite;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,12 +18,13 @@ public class PostsDao {
     }
 
     // Gets a list of all the posts of the given user
-    public static Map getPosts(User user) throws SQLException {
-        Map postList = new HashMap();
+    public static ArrayList getPosts(User user) throws SQLException {
+        ArrayList<Post> postList = new ArrayList<>();
         if(UserDao.userExists(user.getUserName())) {
             ResultSet rs = DBUtil.dbExecuteQuery("SELECT id,content FROM posts WHERE user_id=? ORDER BY id DESC;", user.getId());
             while(rs.next()) {
-                postList.put(rs.getInt("id"), rs.getString("content"));
+                postList.add(new Post(rs.getInt("id"), rs.getString("content")));
+//                postList.put(rs.getInt("id"), rs.getString("content"));
             }
         }
         return postList;
