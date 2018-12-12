@@ -3,6 +3,7 @@ package facebooklite.Controllers;
 import facebooklite.Password;
 import facebooklite.User;
 import facebooklite.UserDao;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -29,16 +32,16 @@ public class MainController {
     private Label invalidCredentials;
 
     @FXML
-    private void openRegFXML(ActionEvent event) throws IOException {
+    private void openRegFXML() throws IOException {
         Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/registration.fxml"));
         Scene regFXMLScene = new Scene(regFXMLParent);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) uname.getScene().getWindow();
         window.setScene(regFXMLScene);
         window.show();
     }
 
     @FXML
-    private void login(ActionEvent event) throws SQLException, IOException {
+    private void login() throws SQLException, IOException {
         if (uname.getText().equals("")){
             // change box outline?
         }
@@ -67,7 +70,7 @@ public class MainController {
                     loader.setController(new DashBoardController(user));
                     Parent regFXMLParent = loader.load();
                     Scene regFXMLScene = new Scene(regFXMLParent);
-                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    Stage window = (Stage) uname.getScene().getWindow();
                     window.setScene(regFXMLScene);
                     window.show();
 
@@ -95,12 +98,44 @@ public class MainController {
     }
 
     @FXML
-    private void openResetOneFXML(ActionEvent event) throws IOException {
+    private void openResetOneFXML() throws IOException {
         Parent regFXMLParent = FXMLLoader.load(getClass().getResource("/resetOne.fxml"));
         Scene regFXMLScene = new Scene(regFXMLParent);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) uname.getScene().getWindow();
         window.setScene(regFXMLScene);
         window.show();
     }
+    @FXML
+    private void loginhandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                login();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    private void reghandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                openRegFXML();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    private void resethandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                openResetOneFXML();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 
 }

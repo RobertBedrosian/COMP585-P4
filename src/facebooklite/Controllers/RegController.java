@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import facebooklite.UserDao;
 import facebooklite.User;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -176,10 +178,10 @@ public class RegController {
         return false;
     }
 
-    public void openMainFXML(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void openMainFXML() throws IOException {
         Parent mainFXMLParent = FXMLLoader.load(getClass().getResource("/main.fxml"));
         Scene mainFXMLScene = new Scene(mainFXMLParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) firstName.getScene().getWindow();
         window.setScene(mainFXMLScene);
         window.show();
     }
@@ -194,6 +196,26 @@ public class RegController {
     private void createAlertBox(String message){
         Alert alertBox = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alertBox.showAndWait();
+    }
+    @FXML
+    private void submithandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                registerUser();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    private void backhandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                openMainFXML();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
 }

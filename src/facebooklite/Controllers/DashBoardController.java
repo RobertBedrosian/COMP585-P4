@@ -255,6 +255,7 @@ public class DashBoardController {
 
 
     private void updateStatus() {
+
         status.setText(user.getStatus());
     }
 }

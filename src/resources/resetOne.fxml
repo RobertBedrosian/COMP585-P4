@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="resetOneFrame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facebooklite.Controllers.ResetOneController">
+<AnchorPane fx:id="resetOneFrame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facebooklite.Controllers.ResetOneController">
    <children>
       <Label alignment="CENTER" layoutX="47.0" layoutY="34.0" prefHeight="39.0" prefWidth="206.0" text="Password Reset" textAlignment="CENTER">
          <font>
@@ -18,12 +18,12 @@
       <TextField fx:id="userName" layoutX="108.0" layoutY="111.0" />
       <TextField fx:id="userEmail" layoutX="108.0" layoutY="151.0" />
       <Label fx:id="failureNotice" layoutX="95.0" layoutY="76.0" text="Incorrect Credentials" textFill="#f70505" visible="false" />
-      <Button fx:id="resetPassword" layoutX="104.0" layoutY="202.0" mnemonicParsing="false" onAction="#resetPassword" text="Reset" />
+      <Button fx:id="resetPassword" layoutX="104.0" layoutY="202.0" mnemonicParsing="false" onAction="#resetPassword" onKeyPressed="#resethandle" text="Reset" />
       <Label fx:id="successNotice" layoutX="102.0" layoutY="76.0" text="Reset Succesful!" textFill="#2c942c" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="159.0" layoutY="202.0" mnemonicParsing="false" onAction="#openMainFXML" text="Back" />
+      <Button layoutX="159.0" layoutY="202.0" mnemonicParsing="false" onAction="#openMainFXML" onKeyPressed="#backhandle" text="Back" />
    </children>
 </AnchorPane>

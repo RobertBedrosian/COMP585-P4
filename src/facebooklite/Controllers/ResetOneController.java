@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import facebooklite.UserDao;
 import facebooklite.User;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -38,7 +40,7 @@ public class ResetOneController {
     private AnchorPane resetOneFrame;
 
     @FXML
-    private void resetPassword(ActionEvent event) throws SQLException, IOException {
+    private void resetPassword() throws SQLException, IOException {
         successNotice.setVisible(false);
         failureNotice.setVisible(false);
 
@@ -98,11 +100,31 @@ public class ResetOneController {
     }
 
     @FXML
-    private void openMainFXML(ActionEvent event) throws IOException {
+    private void openMainFXML() throws IOException {
         Parent mainFXMLParent = FXMLLoader.load(getClass().getResource("/main.fxml"));
         Scene mainFXMLScene = new Scene(mainFXMLParent);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) userEmail.getScene().getWindow();
         window.setScene(mainFXMLScene);
         window.show();
+    }
+    @FXML
+    private void resethandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                resetPassword();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    private void backhandle(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER){
+            try{
+                openMainFXML();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
